@@ -4,9 +4,10 @@ A photography portfolio website showcasing creative visual storytelling through 
 
 ## Tech Stack
 
-- **Frontend** — React 19, React Router
-- **Build Tool** — Create React App
-- **Hosting** — Cloudflare Pages
+- **Frontend** — Next.js 15, React 19
+- **Styling** — Tailwind CSS
+- **Media** — Cloudinary
+- **Hosting** — Cloudflare Pages, GitHub Pages
 - **CI/CD** — GitHub Actions
 
 ## Getting Started
@@ -14,18 +15,18 @@ A photography portfolio website showcasing creative visual storytelling through 
 ### Prerequisites
 
 - Node.js (v18+)
-- npm
+- pnpm
 
 ### Installation
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### Development
 
 ```bash
-npm start
+pnpm dev
 ```
 
 Opens the app at [http://localhost:3000](http://localhost:3000) with hot reload enabled.
@@ -34,15 +35,20 @@ Opens the app at [http://localhost:3000](http://localhost:3000) with hot reload 
 
 The project supports multiple environments via `env-cmd`:
 
-| Environment | Config File | Build Command        |
-| ----------- | ----------- | -------------------- |
-| Test        | `.env.test` | `npm run build:test` |
-| QA          | `.env.qa`   | `npm run build:qa`   |
-| Production  | `.env.prod` | `npm run build:prod` |
+| Environment | Config File  | Dev Command           | Build Command         |
+| ----------- | ------------ | --------------------- | --------------------- |
+| Test        | `.env.test`  | `pnpm preview:test`   | `pnpm build:test`     |
+| QA          | `.env.qa`    | `pnpm preview:qa`     | `pnpm build:qa`       |
+| Production  | `.env.prod`  | `pnpm preview:prod`   | `pnpm build:prod`     |
 
 ## Deployment
 
-Deployments are handled through GitHub Actions workflows:
+| Target           | Command              | Description                        |
+| ---------------- | -------------------- | ---------------------------------- |
+| Cloudflare Pages | `pnpm deploy:cf`     | Builds and deploys via OpenNext    |
+| GitHub Pages     | `pnpm deploy:gh`     | Builds static export to `out/`     |
+
+CI/CD via GitHub Actions:
 
 - **Test** — Triggered on pushes to `main` and `f/**` feature branches
 - **QA** — Triggered on release creation

@@ -1,49 +1,44 @@
 {
   "name": "kriva-pictures",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^13.5.0",
-    "env-cmd": "^11.0.0",
+    "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-grid": "^0.4.1",
+    "autoprefixer": "^10.4.21",
+    "next": "^15.5.14",
+    "nextjs-toploader": "^3.9.17",
+    "postcss": "^8.5.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.2",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-fast-marquee": "^1.6.5",
+    "react-responsive-masonry": "^2.7.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:prod": "env-cmd -f .env.prod react-scripts build",
-    "build:qa": "env-cmd -f .env.qa react-scripts build",
-    "build:test": "env-cmd -f .env.test react-scripts build",
-    "deploy": "npm run build && wrangler deploy",
-    "preview": "npm run build && wrangler dev"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build:prod": "env-cmd -f .env.prod npx @opennextjs/cloudflare build",
+    "build:qa": "env-cmd -f .env.qa npx @opennextjs/cloudflare build",
+    "build:test": "env-cmd -f .env.test npx @opennextjs/cloudflare build",
+    "preview:prod": "env-cmd -f .env.prod next dev",
+    "preview:qa": "env-cmd -f .env.qa next dev",
+    "preview:test": "env-cmd -f .env.test next dev",
+    "deploy:cf": "npm run build && npx @opennextjs/cloudflare deploy",
+    "deploy:gh": "npm run build && npx gh-pages -d out"
   },
   "devDependencies": {
-    "wrangler": "^4.78.0"
+    "@opennextjs/cloudflare": "^1.18.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "env-cmd": "^10.1.0",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.1",
+    "gh-pages": "^6.0.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
   }
 }
