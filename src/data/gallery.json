@@ -1,0 +1,33 @@
+{
+  "categories": [
+    {
+      "slug": "mothers-grace",
+      "name": "Mother's Grace",
+      "cloudinaryFolder": "kp-gallery/Maternity",
+      "events": [
+        {
+          "slug": "shailza",
+          "name": "Shailza's Glowing Journey",
+          "date": "30-07-2025"
+        },
+        {
+          "slug": "demo",
+          "name": "This is a test event",
+          "date": "20-07-2025"
+        }
+      ]
+    },
+    {
+      "slug": "tiny-wonders",
+      "name": "Tiny Wonders",
+      "cloudinaryFolder": "kp-gallery/Tiny Wonders",
+      "events": [
+        {
+          "slug": "anushree",
+          "name": "Anushree's Newborn Session",
+          "date": "27-08-2025"
+        }
+      ]
+    }
+  ]
+}

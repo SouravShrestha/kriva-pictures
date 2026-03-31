@@ -1,0 +1,30 @@
+[
+  {
+    "id": "extra-hour",
+    "name": "Extra hour of shooting",
+    "price_aud": 100,
+    "unit": "per hour",
+    "delivery": null
+  },
+  {
+    "id": "extra-image",
+    "name": "Extra edited image",
+    "price_aud": 25,
+    "unit": "per image",
+    "delivery": null
+  },
+  {
+    "id": "all-unedited",
+    "name": "All unedited (lightly corrected) images via drive",
+    "price_aud": 150,
+    "unit": null,
+    "delivery": null
+  },
+  {
+    "id": "priority-editing",
+    "name": "Priority editing",
+    "price_aud": 120,
+    "unit": null,
+    "delivery": "3 days"
+  }
+]

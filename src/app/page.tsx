@@ -1,14 +1,38 @@
-export default function Home() {
-  const env = process.env.NEXT_PUBLIC_ENV;
+import bannerService from "@/services/bannerService";
+import SplideBanner from "@/components/home/SplideBanner";
+import SectionOne from "@/components/home/SectionOne";
+import SectionTwo from "@/components/home/SectionTwo";
+import SectionThree from "@/components/home/SectionThree";
+import SectionFour from "@/components/home/SectionFour";
+import MovingTextBanner from "@/components/MovingTextBanner";
+import Navbar from "@/components/Navbar";
+import testimonialsData from "@/data/testimonials.json";
+import type { Testimonial } from "@/types/testimonials";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Kriva Pictures | Professional Photography",
+  description:
+    "Welcome to Kriva Pictures. We capture your most special celebrations and moments beautifully.",
+};
+
+export default async function HomePage() {
+  const bannerImages = await bannerService.fetchImageUrls("kp-main-banner");
+  const testimonials = testimonialsData as Testimonial[];
 
   return (
-    <div className="under-construction">
-      <img src="/working-under-construction.gif" alt="Under Construction" />
-      <h1>Something amazing is on its way</h1>
-      <p>
-        Our site is currently under construction. <br /> Stay tuned!
-      </p>
-      {env && <span className="env-badge">{env}</span>}
-    </div>
+    <>
+      <div className="bg-mainBg text-mainText md:min-h-screen relative flex flex-col">
+        <SplideBanner images={bannerImages} />
+        <Navbar />
+      </div>
+      <div className="bg-mainBg text-mainText relative flex flex-col">
+        <SectionOne />
+        <MovingTextBanner />
+        <SectionTwo />
+        <SectionThree testimonials={testimonials} />
+        <SectionFour />
+      </div>
+    </>
   );
 }

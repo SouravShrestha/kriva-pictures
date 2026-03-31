@@ -1,0 +1,64 @@
+"use client";
+
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import ImagePlaceholder from "@/components/ImagePlaceholder";
+
+interface FooterGalleryProps {
+  images: string[];
+}
+
+const FooterGallery = ({ images }: FooterGalleryProps) => {
+  if (images.length === 0) {
+    return (
+      <div className="flex items-center justify-center w-full h-44 md:h-72 bg-colorSecondary">
+        <ImagePlaceholder />
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-row w-full mt-6 gap-x-2">
+      <Splide
+        key={images.length}
+        options={{
+          type: "loop",
+          start: 0,
+          perPage: 4.5,
+          breakpoints: {
+            1536: { perPage: 4.5 },
+            1280: { perPage: 4 },
+            1024: { perPage: 3.5 },
+            768: { perPage: 2 },
+          },
+          focus: "center",
+          pauseOnFocus: false,
+          pauseOnHover: false,
+          autoplay: images.length > 1,
+          interval: 4000,
+          arrows: false,
+          pagination: false,
+          drag: true,
+        }}
+      >
+        {images.map((img, idx) =>
+          img ? (
+            <SplideSlide key={images.length + idx}>
+              <div className="relative">
+                <img
+                  src={img}
+                  alt={`Footer Gallery ${idx + 1}`}
+                  className="object-cover object-center transition-all duration-2000 h-44 w-44 md:h-72 md:w-72 lg:h-72 lg:w-72 relative z-10"
+                />
+                <div className="h-44 w-44 md:h-72 md:w-72 lg:h-72 lg:w-72 absolute top-0 bg-colorSecondary">
+                  <ImagePlaceholder />
+                </div>
+              </div>
+            </SplideSlide>
+          ) : null
+        )}
+      </Splide>
+    </div>
+  );
+};
+
+export default FooterGallery;

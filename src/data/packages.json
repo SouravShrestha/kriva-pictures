@@ -1,0 +1,74 @@
+[
+  {
+    "id": "maternity-glow",
+    "name": "Maternity Glow",
+    "ideal_for": "Moms-to-be (28-36 weeks)",
+    "includes": [
+      { "icon": "time", "text": "1-1.5 hr studio or outdoor session" },
+      { "icon": "outfit", "text": "2 outfit changes, partner included" },
+      { "icon": "props", "text": "Use of props & gowns" },
+      { "icon": "images", "text": "12 edited high-res images" },
+      { "icon": "drive", "text": "Delivery via drive link in 7 days" }
+    ],
+    "price_aud": 350,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367191/539941472_122135289944880324_4233184558242852806_n_x61xpy.jpg"
+  },
+  {
+    "id": "little-steps",
+    "name": "Little Steps",
+    "ideal_for": "Newborn (5-20 days old)",
+    "includes": [
+      { "icon": "time", "text": "2-3 hr studio session" },
+      { "icon": "people", "text": "Baby + parents" },
+      { "icon": "props", "text": "Multiple setups & props" },
+      { "icon": "safety", "text": "Safe posing" },
+      { "icon": "images", "text": "15 edited high-res images" },
+      { "icon": "drive", "text": "Delivery via drive link in 10 days" }
+    ],
+    "price_aud": 450,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367189/cover_milchc.jpg"
+  },
+  {
+    "id": "tiny-moments",
+    "name": "Tiny Moments",
+    "ideal_for": "Baby milestones (3-12 months)",
+    "includes": [
+      { "icon": "time", "text": "1.5-2 hr session" },
+      { "icon": "people", "text": "Baby + family shots" },
+      { "icon": "cake", "text": "Cake smash (optional)" },
+      { "icon": "props", "text": "Props included" },
+      { "icon": "images", "text": "20 edited high-res images" },
+      { "icon": "drive", "text": "Delivery via drive link in 10 days" }
+    ],
+    "price_aud": 500,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367187/539562246_122134265744880324_6055037150170691972_n_lkw7c3.jpg"
+  },
+  {
+    "id": "family-bond",
+    "name": "Family Bond",
+    "ideal_for": "Parents & Kids (all ages)",
+    "includes": [
+      { "icon": "time", "text": "1.5-2 hr outdoor or studio session" },
+      { "icon": "people", "text": "Up to 5 family members" },
+      { "icon": "portrait", "text": "Group & individual portraits" },
+      { "icon": "images", "text": "25 edited high-res images" },
+      { "icon": "drive", "text": "Delivery via drive link in 7 days" }
+    ],
+    "price_aud": 550,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758369814/PNG_image_2_brwnhp.png"
+  },
+  {
+    "id": "special-occasions",
+    "name": "Special Occasions",
+    "ideal_for": "Birthdays, Anniversaries, Parties",
+    "includes": [
+      { "icon": "time", "text": "Up to 3 hr coverage" },
+      { "icon": "camera", "text": "Mix of candid & posed shots" },
+      { "icon": "clicks", "text": "Unlimited clicks (best 30 delivered)" },
+      { "icon": "images", "text": "30 edited high-res images" },
+      { "icon": "drive", "text": "Delivery via drive link in 14 days" }
+    ],
+    "price_aud": 650,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367196/544746772_122136368414880324_1206923057203586496_n_z0brv2.jpg"
+  }
+]

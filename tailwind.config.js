@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('./src/assets/styles/colors');
+
 module.exports = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -6,7 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        ...colors,
+      },
       fontFamily: {
         meysha: ['Meysha', 'serif'],
         barlow: ['Barlow', 'sans-serif'],
