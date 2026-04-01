@@ -1,5 +1,5 @@
 import bannerService from "@/services/bannerService";
-import sectionImagesService from "@/services/sectionImagesService";
+import imagesService from "@/services/imagesService";
 import SplideBanner from "@/components/home/SplideBanner";
 import SectionOne from "@/components/home/SectionOne";
 import SectionTwo from "@/components/home/SectionTwo";
@@ -33,14 +33,14 @@ export default async function HomePage() {
     slideNav,
   ] = await Promise.all([
     bannerService.fetchImageUrls("kp-main-banner"),
-    sectionImagesService.getFirstImageByTag(tags.section1a),
-    sectionImagesService.getFirstImageByTag(tags.section2a),
-    sectionImagesService.getFirstImageByTag(tags.section2b),
-    sectionImagesService.getFirstImageByTag(tags.section2c),
-    sectionImagesService.getFirstImageByTag(tags.section3a),
-    sectionImagesService.getFirstImageByTag(tags.section4a),
-    sectionImagesService.getFirstImageByTag(tags.section4b),
-    sectionImagesService.getFirstImageByTag(tags.slideNav),
+    imagesService.getFirstImageByTag(tags.section1a),
+    imagesService.getFirstImageByTag(tags.section2a),
+    imagesService.getFirstImageByTag(tags.section2b),
+    imagesService.getFirstImageByTag(tags.section2c),
+    imagesService.getFirstImageByTag(tags.section3a),
+    imagesService.getFirstImageByTag(tags.section4a),
+    imagesService.getFirstImageByTag(tags.section4b),
+    imagesService.getFirstImageByTag(tags.slideNav),
   ]);
 
   const section2Images = [section2a, section2b, section2c].filter(

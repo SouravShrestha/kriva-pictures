@@ -1,72 +1,75 @@
 [
   {
-    "id": "maternity-glow",
-    "name": "Maternity Glow",
-    "ideal_for": "Moms-to-be (28-36 weeks)",
+    "id": "maternity-signature",
+    "name": "Maternity Signature",
+    "ideal_for": "Moms-to-be",
     "includes": [
-      { "icon": "time", "text": "1-1.5 hr studio or outdoor session" },
-      { "icon": "outfit", "text": "2 outfit changes, partner included" },
-      { "icon": "props", "text": "Use of props & gowns" },
-      { "icon": "images", "text": "12 edited high-res images" },
-      { "icon": "drive", "text": "Delivery via drive link in 7 days" }
+      { "icon": "time", "text": "2-hour studio session" },
+      {
+        "icon": "images",
+        "text": "20 professionally edited high-quality images"
+      },
+      { "icon": "gallery", "text": "All good JPEG images included" },
+      { "icon": "outfit", "text": "Access to 3 designer maternity gowns" },
+      { "icon": "outfit", "text": "Option to include 1 personal outfit" }
     ],
-    "price_aud": 350,
+    "price_aud": 400,
     "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367191/539941472_122135289944880324_4233184558242852806_n_x61xpy.jpg"
   },
   {
-    "id": "little-steps",
-    "name": "Little Steps",
-    "ideal_for": "Newborn (5-20 days old)",
+    "id": "newborn-signature",
+    "name": "Newborn Signature",
+    "ideal_for": "Newborn (5-20 days)",
     "includes": [
-      { "icon": "time", "text": "2-3 hr studio session" },
-      { "icon": "people", "text": "Baby + parents" },
-      { "icon": "props", "text": "Multiple setups & props" },
-      { "icon": "safety", "text": "Safe posing" },
-      { "icon": "images", "text": "15 edited high-res images" },
-      { "icon": "drive", "text": "Delivery via drive link in 10 days" }
+      { "icon": "time", "text": "2-3 hour studio session" },
+      { "icon": "people", "text": "Baby + parents included" },
+      { "icon": "props", "text": "Props, wraps & setups included" },
+      { "icon": "safety", "text": "Safe posing techniques" },
+      {
+        "icon": "images",
+        "text": "20 professionally edited high-quality images"
+      },
+      { "icon": "gallery", "text": "All good JPEG images included" }
     ],
     "price_aud": 450,
     "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367189/cover_milchc.jpg"
   },
   {
-    "id": "tiny-moments",
-    "name": "Tiny Moments",
-    "ideal_for": "Baby milestones (3-12 months)",
+    "id": "maternity-newborn-combo",
+    "name": "Maternity-Newborn Combo",
+    "ideal_for": "Complete motherhood journey",
     "includes": [
-      { "icon": "time", "text": "1.5-2 hr session" },
-      { "icon": "people", "text": "Baby + family shots" },
-      { "icon": "cake", "text": "Cake smash (optional)" },
-      { "icon": "props", "text": "Props included" },
-      { "icon": "images", "text": "20 edited high-res images" },
-      { "icon": "drive", "text": "Delivery via drive link in 10 days" }
+      { "icon": "combo", "text": "Includes both maternity & newborn sessions" },
+      { "icon": "images", "text": "40 professionally edited images (20 + 20)" },
+      { "icon": "gallery", "text": "All good JPEG images included" },
+      { "icon": "priority", "text": "Priority booking & scheduling" }
     ],
-    "price_aud": 500,
-    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367187/539562246_122134265744880324_6055037150170691972_n_lkw7c3.jpg"
+    "price_aud": 750,
+    "tag": "Best Value",
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367191/539941472_122135289944880324_4233184558242852806_n_x61xpy.jpg"
   },
   {
-    "id": "family-bond",
-    "name": "Family Bond",
-    "ideal_for": "Parents & Kids (all ages)",
+    "id": "family-session",
+    "name": "Family Session",
+    "ideal_for": "Families & kids",
     "includes": [
-      { "icon": "time", "text": "1.5-2 hr outdoor or studio session" },
-      { "icon": "people", "text": "Up to 5 family members" },
-      { "icon": "portrait", "text": "Group & individual portraits" },
-      { "icon": "images", "text": "25 edited high-res images" },
-      { "icon": "drive", "text": "Delivery via drive link in 7 days" }
+      { "icon": "time", "text": "1.5-hour session" },
+      { "icon": "people", "text": "Up to 5 members" },
+      { "icon": "portrait", "text": "Candid + posed shots" },
+      { "icon": "images", "text": "20 edited high-quality images" }
     ],
-    "price_aud": 550,
+    "price_aud": 300,
     "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758369814/PNG_image_2_brwnhp.png"
   },
   {
-    "id": "special-occasions",
-    "name": "Special Occasions",
-    "ideal_for": "Birthdays, Anniversaries, Parties",
+    "id": "events",
+    "name": "Events Coverage",
+    "ideal_for": "Birthdays, parties, celebrations",
     "includes": [
-      { "icon": "time", "text": "Up to 3 hr coverage" },
-      { "icon": "camera", "text": "Mix of candid & posed shots" },
-      { "icon": "clicks", "text": "Unlimited clicks (best 30 delivered)" },
-      { "icon": "images", "text": "30 edited high-res images" },
-      { "icon": "drive", "text": "Delivery via drive link in 14 days" }
+      { "icon": "time", "text": "Up to 3-hour coverage" },
+      { "icon": "camera", "text": "Candid + posed photography" },
+      { "icon": "clicks", "text": "Unlimited clicks" },
+      { "icon": "images", "text": "30 professionally edited images" }
     ],
     "price_aud": 650,
     "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367196/544746772_122136368414880324_1206923057203586496_n_z0brv2.jpg"
