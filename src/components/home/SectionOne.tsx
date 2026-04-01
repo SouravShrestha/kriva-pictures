@@ -46,8 +46,8 @@ const SectionOne = ({ imageUrl }: SectionOneProps) => {
           {texts.sectionOne.descriptionShort}
         </span>
         <div className="w-full flex justify-end md:justify-start my-2 md:mt-5">
-          <Link href="/packages" className="cursor-pointer">
-            <button className="mt-8 flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline">
+          <Link href="/packages" className="cursor-pointer mt-8">
+            <button className="flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline">
               {texts.sectionOne.button}
               <img
                 src={(arrowIcon as { src: string }).src}
