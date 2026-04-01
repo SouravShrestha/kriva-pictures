@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import imgA from "@/assets/images/section-images/section-3a.png";
 import quoteIcon from "@/assets/icons/quote.png";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import type { Testimonial } from "@/types/testimonials";
@@ -9,6 +8,7 @@ import ImagePlaceholder from "@/components/ImagePlaceholder";
 
 interface SectionThreeProps {
   testimonials: Testimonial[];
+  imageUrl: string | null;
 }
 
 const EMPTY_TESTIMONIAL: Testimonial = {
@@ -19,7 +19,7 @@ const EMPTY_TESTIMONIAL: Testimonial = {
   image_url: "",
 };
 
-const SectionThree = ({ testimonials }: SectionThreeProps) => {
+const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
   const [current, setCurrent] = useState(0);
 
   const handlePrevious = useCallback(() => {
@@ -36,14 +36,14 @@ const SectionThree = ({ testimonials }: SectionThreeProps) => {
 
   return (
     <section className="w-full border-t border-borderColor flex flex-col items-center justify-center">
-      <div className="w-full flex-col items-center justify-center overflow-hidden relative">
+      <div className="w-full flex-col items-center justify-center overflow-hidden relative min-h-[60vh]">
         <div className="relative w-full">
           <img
-            src={imgA.src}
+            src={imageUrl ?? undefined}
             alt="child and dog"
-            className="object-cover object-center h-[50vh] md:h-auto w-full relative z-10"
+            className="object-cover object-center h-[50vh] md:h-auto w-full relative z-10 min-h-auto md:min-h-[60vh]"
           />
-          <div className="h-full w-full top-0 bg-colorSecondary absolute">
+          <div className="h-full w-full top-0 bg-colorSecondaryDark absolute">
             <ImagePlaceholder />
           </div>
         </div>

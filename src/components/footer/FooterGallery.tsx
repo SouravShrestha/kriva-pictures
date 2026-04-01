@@ -26,9 +26,26 @@ const FooterGallery = ({ images }: FooterGalleryProps) => {
           perPage: 4.5,
           breakpoints: {
             1536: { perPage: 4.5 },
+            1360: { perPage: 4.25 },
             1280: { perPage: 4 },
-            1024: { perPage: 3.5 },
-            768: { perPage: 2 },
+            1220: { perPage: 3.75 },
+            1120: { perPage: 3.5 },
+            1040: { perPage: 3.25 },
+            970: { perPage: 3 },
+            890: { perPage: 2.75 },
+            820: { perPage: 2.5 },
+            768: { perPage: 4 },
+            720: { perPage: 3.5 },
+            680: { perPage: 3.25 },
+            640: { perPage: 3 },
+            560: { perPage: 2.75 },
+            520: { perPage: 2.5 },
+            460: { perPage: 2.25 },
+            420: { perPage: 2 },
+            380: { perPage: 1.75 },
+            340: { perPage: 1.5 },
+            300: { perPage: 1.25 },
+            260: { perPage: 1 },
           },
           focus: "center",
           pauseOnFocus: false,
@@ -54,7 +71,7 @@ const FooterGallery = ({ images }: FooterGalleryProps) => {
                 </div>
               </div>
             </SplideSlide>
-          ) : null
+          ) : null,
         )}
       </Splide>
     </div>

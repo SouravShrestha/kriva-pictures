@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import img1 from "@/assets/images/section-images/section-3a.png";
 import instaIcon from "@/assets/icons/insta.png";
 import fbIcon from "@/assets/icons/fb.png";
 import crossIcon from "@/assets/icons/cross.png";
@@ -19,9 +18,10 @@ const NAV_LINKS = [
 interface SlidingNavbarProps {
   onClose: () => void;
   onMenuItemClick: () => void;
+  navImageUrl?: string | null;
 }
 
-const SlidingNavbar = ({ onClose, onMenuItemClick }: SlidingNavbarProps) => {
+const SlidingNavbar = ({ onClose, onMenuItemClick, navImageUrl }: SlidingNavbarProps) => {
   const pathname = usePathname();
 
   return (
@@ -42,10 +42,12 @@ const SlidingNavbar = ({ onClose, onMenuItemClick }: SlidingNavbarProps) => {
         </h2>
         <div className="md:flex hidden flex-col items-start justify-between w-full sm:p-6">
           <div>
-            <h2 className="font-meysha text-4xl mb-8 rotate-[-5deg]">Nice to meet you!</h2>
+            <h2 className="font-meysha text-4xl mb-8 rotate-[-5deg]">
+              Nice to meet you!
+            </h2>
             <div className="relative">
               <img
-                src={img1.src}
+                src={navImageUrl ?? undefined}
                 alt="Kriva Pictures"
                 className="w-72 h-48 object-cover rounded-none mb-8 relative z-10"
               />
@@ -65,8 +67,14 @@ const SlidingNavbar = ({ onClose, onMenuItemClick }: SlidingNavbarProps) => {
                 <Link
                   href={link.href}
                   onClick={onMenuItemClick}
-                  className={`font-barlow md:font-ttjenevers text-xl md:text-xl border-b-1.5 hover:border-borderColor cursor-pointer ${
-                    pathname === link.href ? "border-borderColor" : ""
+                  className={`font-barlow md:font-ttjenevers text-xl md:text-xl cursor-pointer ${
+                    (
+                      link.href === "/"
+                        ? pathname === "/"
+                        : pathname.startsWith(link.href)
+                    )
+                      ? "border-b-1.5 border-borderColor"
+                      : "hover:border-b-1.5 border-borderColor"
                   }`}
                 >
                   {link.label}

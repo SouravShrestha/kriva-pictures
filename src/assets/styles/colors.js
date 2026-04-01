@@ -4,4 +4,5 @@ module.exports = {
   borderColor: '#333333',
   mainText: '#333333',
   colorSecondary: '#ede7df',
+  colorSecondaryDark: '#d4cec8',
 };

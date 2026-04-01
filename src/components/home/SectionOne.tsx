@@ -1,16 +1,19 @@
 import Link from "next/link";
-import sectionImage from "@/assets/images/section-images/section-1a.jpg";
 import texts from "@/resources/texts";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 
-const SectionOne = () => {
+interface SectionOneProps {
+  imageUrl: string | null;
+}
+
+const SectionOne = ({ imageUrl }: SectionOneProps) => {
   return (
     <section className="w-full flex rg:flex-row md:mt-0 flex-col-reverse flex-1 md:h-[calc(100vh-64px)] mt-4 items-center">
-      <div className="flex items-start rg:items-center justify-center h-72 w-full md:h-auto md:w-auto">
+      <div className="flex items-start rg:items-center justify-center h-72 w-full md:h-auto md:w-auto min-w-[35%]">
         <div className="relative w-full">
           <img
-            src={sectionImage.src}
+            src={imageUrl ?? undefined}
             alt="Celebration"
             className="w-full h-72 object-cover rg:h-[calc(100vh-64px)] z-10 relative"
           />
@@ -46,7 +49,11 @@ const SectionOne = () => {
           <Link href="/packages" className="cursor-pointer">
             <button className="mt-8 flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline">
               {texts.sectionOne.button}
-              <img src={(arrowIcon as { src: string }).src} alt="arrow" className="w-6 h-6" />
+              <img
+                src={(arrowIcon as { src: string }).src}
+                alt="arrow"
+                className="w-6 h-6"
+              />
             </button>
           </Link>
         </div>

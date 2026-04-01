@@ -14,7 +14,11 @@ const NAV_LINKS = [
   { href: "/contact", label: "CONTACT" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  navImageUrl?: string | null;
+}
+
+const Navbar = ({ navImageUrl }: NavbarProps) => {
   const [isSticky, setIsSticky] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const navRef = useRef<HTMLElement>(null);
@@ -117,6 +121,7 @@ const Navbar = () => {
           <SlidingNavbar
             onClose={() => setShowMenu(false)}
             onMenuItemClick={() => setShowMenu(false)}
+            navImageUrl={navImageUrl}
           />
         </>
       )}

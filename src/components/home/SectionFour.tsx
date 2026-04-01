@@ -1,16 +1,19 @@
 import Link from "next/link";
-import imgA from "@/assets/images/section-images/section-4a.png";
-import imgB from "@/assets/images/section-images/section-4b.png";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import texts from "@/resources/texts";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 
-const SectionFour = () => {
+interface SectionFourProps {
+  imageUrl4a: string | null;
+  imageUrl4b: string | null;
+}
+
+const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
   return (
     <section className="w-full flex flex-col md:flex-row items-center bg-[#ede7df] -mt-32 border-t border-borderColor justify-between">
       <div className="relative w-full md:hidden">
         <img
-          src={imgB.src}
+          src={imageUrl4b ?? undefined}
           alt="Photography"
           className="object-cover h-[50vh] w-full border-l-0 border-borderColor md:hidden relative z-10"
         />
@@ -22,18 +25,22 @@ const SectionFour = () => {
         <div className="flex flex-col items-end">
           <div className="relative">
             <img
-              src={imgA.src}
+              src={imageUrl4a ?? undefined}
               alt="Child in purple dress"
               className="w-56 h-64 object-cover mb-8 md:mb-0 -translate-y-1/2 md:-translate-y-0 rounded-sm md:rounded-none z-20 relative"
             />
-            <div className="w-56 h-64 mb-8 md:mb-0 -translate-y-1/2 md:-translate-y-0 rounded-sm md:rounded-none z-10 absolute top-0 bg-colorSecondary">
+            <div className="w-56 h-64 mb-8 md:mb-0 -translate-y-1/2 md:-translate-y-0 rounded-sm md:rounded-none z-10 absolute top-0 bg-mainBg">
               <ImagePlaceholder />
             </div>
           </div>
           <Link href="/contact" className="cursor-pointer">
             <button className="mt-8 md:flex items-center gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline hidden">
               {texts.sectionFour.button}
-              <img src={(arrowIcon as { src: string }).src} alt="arrow" className="w-6 h-6" />
+              <img
+                src={(arrowIcon as { src: string }).src}
+                alt="arrow"
+                className="w-6 h-6"
+              />
             </button>
           </Link>
         </div>
@@ -57,7 +64,11 @@ const SectionFour = () => {
           <Link href="/contact" className="cursor-pointer">
             <button className="mt-8 flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline md:hidden">
               {texts.sectionFour.button}
-              <img src={(arrowIcon as { src: string }).src} alt="arrow" className="w-6 h-6" />
+              <img
+                src={(arrowIcon as { src: string }).src}
+                alt="arrow"
+                className="w-6 h-6"
+              />
             </button>
           </Link>
         </div>
@@ -65,7 +76,7 @@ const SectionFour = () => {
       <div className="w-1/3 md:flex items-center justify-end hidden">
         <div className="relative w-full">
           <img
-            src={imgB.src}
+            src={imageUrl4b ?? undefined}
             alt="Photography"
             className="object-cover h-screen w-full border-l-0 border-borderColor relative z-10"
           />

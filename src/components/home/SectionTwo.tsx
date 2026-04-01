@@ -1,14 +1,13 @@
 import Link from "next/link";
 import arrowIcon from "@/assets/icons/arrow.svg";
-import imgA from "@/assets/images/section-images/section-2a.png";
-import imgB from "@/assets/images/section-images/section-2b.png";
-import imgC from "@/assets/images/section-images/section-2c.png";
 import texts from "@/resources/texts";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 
-const IMAGES = [imgA, imgB, imgC];
+interface SectionTwoProps {
+  images: string[];
+}
 
-const SectionTwo = () => {
+const SectionTwo = ({ images }: SectionTwoProps) => {
   return (
     <section className="w-full bg-colorSecondary border-borderColor">
       <div className="mx-auto flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-borderColor">
@@ -16,7 +15,7 @@ const SectionTwo = () => {
           <div key={i} className="flex flex-col items-center px-6 py-10 flex-1">
             <div className="relative">
               <img
-                src={IMAGES[i].src}
+                src={images[i]}
                 alt={s.title}
                 className="object-cover mb-8 h-64 md:w-64 rounded-sm relative z-10"
               />
