@@ -8,9 +8,10 @@ import type { GalleryEvent } from "@/types/gallery";
 interface SubfolderCardProps {
   event: GalleryEvent;
   categorySlug: string;
+  reverse?: boolean;
 }
 
-const SubfolderCard = ({ event, categorySlug }: SubfolderCardProps) => {
+const SubfolderCard = ({ event, categorySlug, reverse }: SubfolderCardProps) => {
   const eventDateStr = formatEventDate(event.date);
   const galleryPath = `/gallery/${categorySlug}/${event.slug}`;
 
