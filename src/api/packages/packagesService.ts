@@ -5,11 +5,11 @@ import type { IPackagesService } from "./IPackagesService";
 
 const packagesService: IPackagesService = {
   getPackages(): Package[] {
-    return packagesData as Package[];
+    return packagesData satisfies Package[];
   },
 
   getAddons(): Addon[] {
-    return addonsData as Addon[];
+    return addonsData satisfies Addon[];
   },
 };
 

@@ -1,6 +1,7 @@
 import type { INotificationService, ContactPayload } from "./INotificationService";
+import { env } from "@/lib/env";
 
-const TELEGRAM_API = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+const TELEGRAM_API = `https://api.telegram.org/bot${env.telegramBotToken}/sendMessage`;
 
 function escapeHtml(str: string): string {
   return str
@@ -24,7 +25,7 @@ const notificationService: INotificationService = {
       escapeHtml(message),
     ].join("\n");
 
-    const chatIds = (process.env.TELEGRAM_CHAT_ID ?? "")
+    const chatIds = env.telegramChatId
       .split(",")
       .map((id) => id.trim())
       .filter(Boolean);

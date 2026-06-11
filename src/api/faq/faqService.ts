@@ -4,7 +4,7 @@ import type { IFaqService } from "./IFaqService";
 
 const faqService: IFaqService = {
   getCategories(): FaqCategory[] {
-    return faqData as FaqCategory[];
+    return faqData satisfies FaqCategory[];
   },
 };
 

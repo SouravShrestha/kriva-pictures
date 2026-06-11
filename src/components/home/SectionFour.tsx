@@ -40,7 +40,7 @@ const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
             <button className="mt-8 md:flex items-center gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline hidden">
               {texts.sectionFour.button}
               <img
-                src={(arrowIcon as { src: string }).src}
+                src={arrowIcon.src}
                 alt="arrow"
                 className="w-6 h-6"
               />
@@ -68,7 +68,7 @@ const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
             <button className="mt-8 flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline md:hidden">
               {texts.sectionFour.button}
               <img
-                src={(arrowIcon as { src: string }).src}
+                src={arrowIcon.src}
                 alt="arrow"
                 className="w-6 h-6"
               />

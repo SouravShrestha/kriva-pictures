@@ -37,7 +37,7 @@ const SectionTwo = ({ images }: SectionTwoProps) => {
         >
           <span className="flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline uppercase">
             {texts.sectionTwo.button}
-            <img src={(arrowIcon as { src: string }).src} alt="arrow" className="w-6 h-6" />
+            <img src={arrowIcon.src} alt="arrow" className="w-6 h-6" />
           </span>
         </Link>
       </div>

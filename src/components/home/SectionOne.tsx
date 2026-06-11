@@ -51,7 +51,7 @@ const SectionOne = ({ imageUrl }: SectionOneProps) => {
             <button className="flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline">
               {texts.sectionOne.button}
               <img
-                src={(arrowIcon as { src: string }).src}
+                src={arrowIcon.src}
                 alt="arrow"
                 className="w-6 h-6"
               />

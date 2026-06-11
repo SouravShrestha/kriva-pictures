@@ -70,7 +70,7 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
             disabled={testimonials.length === 0}
           >
             <img
-              src={(arrowIcon as { src: string }).src}
+              src={arrowIcon.src}
               alt="previous"
               className="w-8 h-8 rotate-180"
             />
@@ -88,7 +88,7 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
                   disabled={testimonials.length === 0}
                 >
                   <img
-                    src={(arrowIcon as { src: string }).src}
+                    src={arrowIcon.src}
                     alt="previous"
                     className="w-8 h-8 rotate-180"
                   />
@@ -120,7 +120,7 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
                     </span>
                   </div>
                   <img
-                    src={(arrowIcon as { src: string }).src}
+                    src={arrowIcon.src}
                     alt="next"
                     className="w-8 h-8"
                   />
@@ -167,7 +167,7 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
               <span className="text-xs tracking-widest font-semibold">XT</span>
             </div>
             <img
-              src={(arrowIcon as { src: string }).src}
+              src={arrowIcon.src}
               alt="next"
               className="w-8 h-8"
             />

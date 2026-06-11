@@ -1,3 +1,5 @@
+import { env } from "@/lib/env";
+
 interface SearchResult {
   resources: { public_id: string; secure_url: string }[];
   next_cursor?: string;
@@ -11,12 +13,8 @@ interface SearchOptions {
 }
 
 async function search(options: SearchOptions): Promise<SearchResult> {
-  const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-  const apiKey = process.env.CLOUDINARY_API_KEY;
-  const apiSecret = process.env.CLOUDINARY_API_SECRET;
-
-  const credentials = btoa(`${apiKey}:${apiSecret}`);
-  const url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/search`;
+  const credentials = btoa(`${env.cloudinaryApiKey}:${env.cloudinaryApiSecret}`);
+  const url = `https://api.cloudinary.com/v1_1/${env.cloudinaryCloudName}/resources/search`;
 
   const body: Record<string, unknown> = {
     expression: options.expression,

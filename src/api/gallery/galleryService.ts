@@ -4,7 +4,7 @@ import galleryData from "@/data/gallery.json";
 import type { GalleryCategoryConfig, GalleryCategory, GalleryEvent } from "@/types/gallery";
 import type { IGalleryService } from "./IGalleryService";
 
-const categories = galleryData.categories as GalleryCategoryConfig[];
+const categories = galleryData.categories satisfies GalleryCategoryConfig[];
 
 interface FolderResources {
   coverImage: string;

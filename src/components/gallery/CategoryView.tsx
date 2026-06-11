@@ -1,5 +1,5 @@
 import Link from "next/link";
-import arrowIcon from "@/assets/icons/arrow.svg";
+import ArrowIcon from "@/components/shared/ArrowIcon";
 import type { GalleryCategory } from "@/types/gallery";
 import SubfolderCard from "./SubfolderCard";
 
@@ -16,7 +16,7 @@ const CategoryView = ({ category, categorySlug }: CategoryViewProps) => {
           href="/gallery"
           className="flex items-center gap-2 md:border-r pr-20 border-borderColor hover:underline py-10 cursor-pointer"
         >
-          <img src={(arrowIcon as { src: string }).src} alt="Back" className="w-8 h-4 rotate-180" />
+          <ArrowIcon className="w-8 h-4 rotate-180" />
           <span className="font-ttjenevers text-base tracking-wide ml-4 uppercase">
             Back to all galleries
           </span>

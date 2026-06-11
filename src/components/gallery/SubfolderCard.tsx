@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatEventDate } from "@/utils/dateUtils";
 import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
+import ArrowIcon from "@/components/shared/ArrowIcon";
 import type { GalleryEvent } from "@/types/gallery";
 
 interface SubfolderCardProps {
@@ -47,22 +48,7 @@ const SubfolderCard = ({ event, categorySlug }: SubfolderCardProps) => {
         {/* "View gallery" cue — slides up on hover */}
         <span className="mt-3 inline-flex items-center gap-2 font-barlow text-xs tracking-[0.18em] uppercase text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
           View Gallery
-          <svg
-            width="20"
-            height="10"
-            viewBox="0 0 20 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5"
-          >
-            <path
-              d="M0 5H19M15 1L19 5L15 9"
-              stroke="currentColor"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowIcon className="w-5" />
         </span>
       </div>
     </Link>

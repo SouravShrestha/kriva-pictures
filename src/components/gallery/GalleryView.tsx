@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import arrowIcon from "@/assets/icons/arrow.svg";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { formatEventDate } from "@/utils/dateUtils";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import ArrowIcon from "@/components/shared/ArrowIcon";
 import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 import type { GalleryEvent } from "@/types/gallery";
 
@@ -60,11 +60,7 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
             href={`/gallery`}
             className="flex items-center gap-2 md:border-r pr-20 border-borderColor hover:underline py-10 cursor-pointer"
           >
-            <img
-              src={(arrowIcon as { src: string }).src}
-              alt="Back"
-              className="w-8 h-4 rotate-180"
-            />
+            <ArrowIcon className="w-8 h-4 rotate-180" />
             <span className="font-ttjenevers text-base tracking-wide ml-4 uppercase">
               Back to gallery
             </span>
@@ -143,11 +139,7 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
             className="absolute left-4 text-white hover:opacity-70 transition-opacity p-3 z-10"
             aria-label="Previous image"
           >
-            <img
-              src={(arrowIcon as { src: string }).src}
-              alt="Previous"
-              className="w-8 h-4 rotate-180 invert"
-            />
+            <ArrowIcon className="w-8 h-4 rotate-180 text-white" />
           </button>
 
           {/* Image */}
@@ -168,11 +160,7 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
             className="absolute right-4 text-white hover:opacity-70 transition-opacity p-3 z-10"
             aria-label="Next image"
           >
-            <img
-              src={(arrowIcon as { src: string }).src}
-              alt="Next"
-              className="w-8 h-4 invert"
-            />
+            <ArrowIcon className="w-8 h-4 text-white" />
           </button>
         </div>
       )}
