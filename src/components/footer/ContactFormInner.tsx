@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import texts from "@/resources/texts";
 
 const MAX_MESSAGE_LENGTH = 300;
@@ -16,28 +15,21 @@ interface FormState {
 type FormErrors = Partial<Record<keyof FormState, string>>;
 type FormTouched = Partial<Record<keyof FormState, boolean>>;
 
-const ContactFormInner = () => {
-  const searchParams = useSearchParams();
+interface ContactFormInnerProps {
+  initialMessage?: string;
+}
+
+const ContactFormInner = ({ initialMessage = "" }: ContactFormInnerProps) => {
   const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
     phone: "",
-    message: "",
+    message: initialMessage,
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<FormTouched>({});
   const [loading, setLoading] = useState(false);
   const [submitMessage, setSubmitMessage] = useState({ type: "", text: "" });
-
-  useEffect(() => {
-    const packageName = searchParams.get("package");
-    if (packageName) {
-      setForm((prev) => ({
-        ...prev,
-        message: `I would like to enquire about ${packageName} package.`,
-      }));
-    }
-  }, [searchParams]);
 
   const validateField = (
     name: keyof FormState,

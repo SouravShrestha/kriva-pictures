@@ -7,7 +7,11 @@ import instaIcon from "@/assets/icons/insta.png";
 import texts from "@/resources/texts";
 import ContactForm from "@/components/footer/ContactForm";
 
-const ContactMain = () => {
+interface ContactMainProps {
+  initialMessage?: string;
+}
+
+const ContactMain = ({ initialMessage }: ContactMainProps) => {
   return (
     <div className="flex flex-col py-10 md:py-20 px-8">
       <div className="w-full max-w-2xl mx-auto mb-4">
@@ -76,7 +80,7 @@ const ContactMain = () => {
           </div>
         </div>
         <div className="w-full md:w-2/3 flex flex-col justify-center items-center md:pb-10 pb-16 md:px-24">
-          <ContactForm />
+          <ContactForm initialMessage={initialMessage} />
         </div>
       </div>
     </div>
