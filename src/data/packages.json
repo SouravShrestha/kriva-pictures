@@ -1,0 +1,77 @@
+[
+  {
+    "id": "maternity-signature",
+    "name": "Maternity Signature",
+    "ideal_for": "Moms-to-be",
+    "includes": [
+      { "icon": "time", "text": "2-hour studio session" },
+      {
+        "icon": "images",
+        "text": "20 professionally edited high-quality images"
+      },
+      { "icon": "gallery", "text": "All good JPEG images included" },
+      { "icon": "outfit", "text": "Access to 3 designer maternity gowns" },
+      { "icon": "outfit", "text": "Option to include 1 personal outfit" }
+    ],
+    "price_aud": 400,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367191/539941472_122135289944880324_4233184558242852806_n_x61xpy.jpg"
+  },
+  {
+    "id": "newborn-signature",
+    "name": "Newborn Signature",
+    "ideal_for": "Newborn (5-20 days)",
+    "includes": [
+      { "icon": "time", "text": "2-3 hour studio session" },
+      { "icon": "people", "text": "Baby + parents included" },
+      { "icon": "props", "text": "Props, wraps & setups included" },
+      { "icon": "safety", "text": "Safe posing techniques" },
+      {
+        "icon": "images",
+        "text": "20 professionally edited high-quality images"
+      },
+      { "icon": "gallery", "text": "All good JPEG images included" }
+    ],
+    "price_aud": 450,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367189/cover_milchc.jpg"
+  },
+  {
+    "id": "maternity-newborn-combo",
+    "name": "Maternity-Newborn Combo",
+    "ideal_for": "Complete motherhood journey",
+    "includes": [
+      { "icon": "combo", "text": "Includes both maternity & newborn sessions" },
+      { "icon": "images", "text": "40 professionally edited images (20 + 20)" },
+      { "icon": "gallery", "text": "All good JPEG images included" },
+      { "icon": "priority", "text": "Priority booking & scheduling" }
+    ],
+    "price_aud": 750,
+    "tag": "Best Value",
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367191/539941472_122135289944880324_4233184558242852806_n_x61xpy.jpg"
+  },
+  {
+    "id": "family-session",
+    "name": "Family Session",
+    "ideal_for": "Families & kids",
+    "includes": [
+      { "icon": "time", "text": "1.5-hour session" },
+      { "icon": "people", "text": "Up to 5 members" },
+      { "icon": "portrait", "text": "Candid + posed shots" },
+      { "icon": "images", "text": "20 edited high-quality images" }
+    ],
+    "price_aud": 300,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758369814/PNG_image_2_brwnhp.png"
+  },
+  {
+    "id": "events",
+    "name": "Events Coverage",
+    "ideal_for": "Birthdays, parties, celebrations",
+    "includes": [
+      { "icon": "time", "text": "Up to 3-hour coverage" },
+      { "icon": "camera", "text": "Candid + posed photography" },
+      { "icon": "clicks", "text": "Unlimited clicks" },
+      { "icon": "images", "text": "30 professionally edited images" }
+    ],
+    "price_aud": 650,
+    "image": "https://res.cloudinary.com/dxzbodm5m/image/upload/v1758367196/544746772_122136368414880324_1206923057203586496_n_z0brv2.jpg"
+  }
+]

@@ -39,3 +39,7 @@ pnpm-debug.log*
 
 # opennext
 .open-next
+
+# local images
+src/assets/images/section-images
+public/section-images

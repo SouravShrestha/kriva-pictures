@@ -1,0 +1,107 @@
+[
+  {
+    "id": "addons-services",
+    "name": "Add-ons & Services",
+    "faqs": [
+      {
+        "id": "addons-1",
+        "question": "Can I request additional photos?",
+        "answer": "Yes! You can purchase extra retouched photos as an add-on."
+      },
+      {
+        "id": "addons-2",
+        "question": "What if I need more time during the shoot?",
+        "answer": "You can extend your session with our +1 Hour Coverage add-on."
+      }
+    ]
+  },
+  {
+    "id": "booking-scheduling",
+    "name": "Booking & Scheduling",
+    "faqs": [
+      {
+        "id": "booking-1",
+        "question": "How do I book a session?",
+        "answer": "Simply click the 'Schedule a Session' button and fill out the booking form."
+      },
+      {
+        "id": "booking-2",
+        "question": "Can I reschedule my session?",
+        "answer": "Yes, sessions can be rescheduled with at least 48 hours' notice."
+      }
+    ]
+  },
+  {
+    "id": "photos-delivery",
+    "name": "Photos & Delivery",
+    "faqs": [
+      {
+        "id": "photos-1",
+        "question": "How many photos will I receive?",
+        "answer": "Depending on the package, you'll receive 10–30 fully edited digital images."
+      },
+      {
+        "id": "photos-2",
+        "question": "How will I get my photos?",
+        "answer": "Your photos will be delivered via a secure Google Drive link for easy access and sharing."
+      },
+      {
+        "id": "photos-3",
+        "question": "Do you provide printed photos or USB drives?",
+        "answer": "No, we currently provide digital delivery only."
+      },
+      {
+        "id": "photos-4",
+        "question": "How long does it take to receive the edited photos?",
+        "answer": "Final edited photos are usually delivered within 2–3 weeks after your session."
+      },
+      {
+        "id": "photos-5",
+        "question": "Do you edit all the photos?",
+        "answer": "Yes, all delivered photos are professionally edited and retouched to our highest standard."
+      }
+    ]
+  },
+  {
+    "id": "session-details",
+    "name": "Session Details",
+    "faqs": [
+      {
+        "id": "session-1",
+        "question": "Do you travel to client locations?",
+        "answer": "Yes, we can shoot at your home or an outdoor location. Travel fees may apply depending on distance."
+      },
+      {
+        "id": "session-2",
+        "question": "Do you provide props for the photoshoot?",
+        "answer": "Yes, we provide some basic props. You're also welcome to bring your own for a personal touch."
+      },
+      {
+        "id": "session-3",
+        "question": "What should we wear for the photoshoot?",
+        "answer": "Neutral and coordinated colors work best. We'll be happy to share outfit tips to help you prepare."
+      },
+      {
+        "id": "session-4",
+        "question": "Do you shoot indoors or outdoors?",
+        "answer": "Both! We can capture your moments at our studio, your home, or an outdoor location of your choice."
+      }
+    ]
+  },
+  {
+    "id": "special-considerations",
+    "name": "Special Considerations",
+    "faqs": [
+      {
+        "id": "special-1",
+        "question": "Can I bring family members to the shoot?",
+        "answer": "Absolutely! Immediate family members are welcome. For larger groups, please let us know in advance."
+      },
+      {
+        "id": "special-2",
+        "question": "What if my baby is fussy or not in the mood?",
+        "answer": "No worries! We allow extra time and work at your baby's pace to ensure a relaxed experience."
+      }
+    ]
+  }
+]

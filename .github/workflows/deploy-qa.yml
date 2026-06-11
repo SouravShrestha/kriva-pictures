@@ -31,11 +31,9 @@ jobs:
 
       - name: Upload secrets to Worker
         run: |
-          echo "$CLOUDINARY_CLOUD_NAME" | npx wrangler secret put CLOUDINARY_CLOUD_NAME --env qa
-          echo "$CLOUDINARY_API_KEY" | npx wrangler secret put CLOUDINARY_API_KEY --env qa
-          echo "$CLOUDINARY_API_SECRET" | npx wrangler secret put CLOUDINARY_API_SECRET --env qa
-          echo "$TELEGRAM_BOT_TOKEN" | npx wrangler secret put TELEGRAM_BOT_TOKEN --env qa
-          echo "$TELEGRAM_CHAT_ID" | npx wrangler secret put TELEGRAM_CHAT_ID --env qa
+          printf '{\n  "CLOUDINARY_CLOUD_NAME": "%s",\n  "CLOUDINARY_API_KEY": "%s",\n  "CLOUDINARY_API_SECRET": "%s",\n  "TELEGRAM_BOT_TOKEN": "%s",\n  "TELEGRAM_CHAT_ID": "%s"\n}' \
+            "$CLOUDINARY_CLOUD_NAME" "$CLOUDINARY_API_KEY" "$CLOUDINARY_API_SECRET" \
+            "$TELEGRAM_BOT_TOKEN" "$TELEGRAM_CHAT_ID" | npx wrangler secret bulk --env qa
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
