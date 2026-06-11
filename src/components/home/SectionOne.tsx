@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import texts from "@/resources/texts";
 import arrowIcon from "@/assets/icons/arrow.svg";
-import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 
 interface SectionOneProps {
   imageUrl: string | null;
@@ -11,15 +12,15 @@ const SectionOne = ({ imageUrl }: SectionOneProps) => {
   return (
     <section className="w-full flex rg:flex-row md:mt-0 flex-col-reverse flex-1 md:h-[calc(100vh-64px)] mt-4 items-center">
       <div className="flex items-start rg:items-center justify-center h-72 w-full md:h-auto md:w-auto min-w-[35%]">
-        <div className="relative w-full">
-          <img
-            src={imageUrl ?? undefined}
+        <div className="relative w-full h-72 rg:h-[calc(100vh-64px)]">
+          <Image
+            src={withCloudinaryOptimization(imageUrl ?? "")}
             alt="Celebration"
-            className="w-full h-72 object-cover rg:h-[calc(100vh-64px)] z-10 relative"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover z-10"
           />
-          <div className="w-full h-72 object-cover rg:h-[calc(100vh-64px)] absolute top-0 bg-colorSecondary">
-            <ImagePlaceholder />
-          </div>
         </div>
       </div>
       <div className="flex items-center justify-center h-full w-full md:w-32 rg:flex">

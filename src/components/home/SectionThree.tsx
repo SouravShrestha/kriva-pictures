@@ -5,6 +5,7 @@ import quoteIcon from "@/assets/icons/quote.png";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import type { Testimonial } from "@/types/testimonials";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 
 interface SectionThreeProps {
   testimonials: Testimonial[];
@@ -39,8 +40,9 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
       <div className="w-full flex-col items-center justify-center overflow-hidden relative min-h-[60vh]">
         <div className="relative w-full">
           <img
-            src={imageUrl ?? undefined}
+            src={withCloudinaryOptimization(imageUrl ?? "")}
             alt="child and dog"
+            loading="lazy"
             className="object-cover object-center h-[50vh] md:h-auto w-full relative z-10 min-h-auto md:min-h-[60vh]"
           />
           <div className="h-full w-full top-0 bg-colorSecondaryDark absolute">

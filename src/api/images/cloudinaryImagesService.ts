@@ -34,7 +34,7 @@ const cloudinaryImagesService: IImagesService = {
   async getImagesByTag(tag: string): Promise<string[]> {
     const resources = await fetchAllSectionResources();
     return resources
-      .filter((r) => r.publicId.startsWith(tag))
+      .filter((r) => r.publicId.startsWith(`${FOLDER}/${tag}`))
       .map((r) => r.secureUrl);
   },
 

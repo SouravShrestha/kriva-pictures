@@ -1,3 +1,4 @@
+import { cache } from "react";
 import cloudinaryClient from "@/lib/cloudinary";
 import galleryData from "@/data/gallery.json";
 import type { GalleryCategoryConfig, GalleryCategory, GalleryEvent } from "@/types/gallery";
@@ -10,7 +11,7 @@ interface FolderResources {
   images: string[];
 }
 
-async function fetchFolderResources(folderPath: string): Promise<FolderResources> {
+const fetchFolderResources = cache(async (folderPath: string): Promise<FolderResources> => {
   const all: { publicId: string; secureUrl: string }[] = [];
   let nextCursor: string | undefined;
 
@@ -36,7 +37,7 @@ async function fetchFolderResources(folderPath: string): Promise<FolderResources
   const coverImage = coverEntry?.secureUrl ?? images[0] ?? "";
 
   return { coverImage, images };
-}
+});
 
 async function resolveEvent(
   cloudinaryFolder: string,
@@ -103,12 +104,6 @@ const galleryService: IGalleryService = {
     const eventConfig = cat.events.find((e) => e.slug === eventSlug);
     if (!eventConfig) return null;
     return resolveEvent(cat.cloudinaryFolder, eventConfig.slug, eventConfig.name, eventConfig.date);
-  },
-
-  async getEventImageUrls(event: GalleryEvent): Promise<string[]> {
-    const cat = categories.find((c) => c.events.some((e) => e.slug === event.slug));
-    if (!cat) return [];
-    return this.getEventImages(cat.slug, event.slug);
   },
 
   async getEventImages(categorySlug: string, eventSlug: string): Promise<string[]> {

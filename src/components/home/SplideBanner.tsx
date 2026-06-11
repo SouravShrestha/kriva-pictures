@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 
 interface SplideBannerProps {
   images: string[];
@@ -61,10 +62,11 @@ const SplideBanner = ({ images }: SplideBannerProps) => {
         {images.map((img, idx) =>
           img ? (
             <SplideSlide key={idx}>
-              <div className="relative">
+              <div className="relative" style={{ height: "calc(100vh - 72px)" }}>
                 <img
-                  src={img}
+                  src={withCloudinaryOptimization(img)}
                   alt={`Banner ${idx + 1}`}
+                  loading={idx === 0 ? "eager" : "lazy"}
                   className="transition-all duration-2000 h-full w-full object-cover relative z-10"
                   style={{ height: "calc(100vh - 72px)" }}
                 />

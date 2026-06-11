@@ -6,6 +6,7 @@ import arrowIcon from "@/assets/icons/arrow.svg";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { formatEventDate } from "@/utils/dateUtils";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 import type { GalleryEvent } from "@/types/gallery";
 
 interface GalleryViewProps {
@@ -100,8 +101,9 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
                     <ImagePlaceholder />
                   </div>
                   <img
-                    src={imgUrl}
+                    src={withCloudinaryOptimization(imgUrl)}
                     alt={`gallery-img-${idx}`}
+                    loading="lazy"
                     className="relative z-10 transition-opacity duration-200 group-hover:opacity-85"
                     style={{ width: "100%", display: "block" }}
                   />
@@ -150,8 +152,9 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
 
           {/* Image */}
           <img
-            src={images[lightboxIndex]}
+            src={withCloudinaryOptimization(images[lightboxIndex])}
             alt={`fullscreen-${lightboxIndex}`}
+            loading="eager"
             className="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />

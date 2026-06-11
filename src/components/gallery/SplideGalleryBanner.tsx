@@ -5,6 +5,7 @@ import Splide from "@splidejs/splide";
 import { Grid } from "@splidejs/splide-extension-grid";
 import "@splidejs/splide/dist/css/splide.min.css";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 
 interface SplideGalleryBannerProps {
   images: string[];
@@ -66,7 +67,7 @@ const SplideGalleryBanner = ({ images }: SplideGalleryBannerProps) => {
                       <ImagePlaceholder />
                     </div>
                     <img
-                      src={img}
+                      src={withCloudinaryOptimization(img)}
                       alt={`Gallery Banner ${idx + 1}`}
                       className="object-cover h-64 w-full relative"
                     />

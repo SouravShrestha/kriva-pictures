@@ -13,7 +13,6 @@ const localFilenames: Record<string, string> = {
   "section-2b": "section-2b.png",
   "section-2c": "section-2c.png",
   "section-3a": "section-3a.png",
-  "section-3b": "section-3b.png",
   "section-4a": "section-4a.png",
   "section-4b": "section-4b.png",
   "slide-nav": "slide-nav.png",
