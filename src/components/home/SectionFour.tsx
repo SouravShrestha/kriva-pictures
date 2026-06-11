@@ -1,8 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import texts from "@/resources/texts";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
+import { useInView } from "@/utils/useInView";
 
 interface SectionFourProps {
   imageUrl4a: string | null;
@@ -10,8 +13,13 @@ interface SectionFourProps {
 }
 
 const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
+  const { ref: sectionRef, inView } = useInView(0.1);
+
   return (
-    <section className="w-full flex flex-col md:flex-row items-center bg-[#ede7df] -mt-32 border-t border-borderColor justify-between">
+    <section
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="w-full flex flex-col md:flex-row items-center bg-[#ede7df] -mt-32 border-t border-borderColor justify-between"
+    >
       <div className="relative w-full md:hidden">
         <img
           src={withCloudinaryOptimization(imageUrl4b ?? "")}
@@ -25,7 +33,9 @@ const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
       </div>
       <div className="md:w-2/3 w-full p-8 flex flex-col md:flex-row items-center justify-center gap-x-28">
         <div className="flex flex-col items-end">
-          <div className="relative">
+          <div
+            className={`relative ${inView ? "animate-scale-in" : "opacity-0"}`}
+          >
             <img
               src={withCloudinaryOptimization(imageUrl4a ?? "")}
               alt="Child in purple dress"
@@ -42,12 +52,16 @@ const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
               <img
                 src={arrowIcon.src}
                 alt="arrow"
-                className="w-6 h-6"
+                className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
               />
             </button>
           </Link>
         </div>
-        <div className="flex flex-col items-center md:items-start text-center md:text-left md:-mt-10 -mt-28">
+        <div
+          className={`flex flex-col items-center md:items-start text-center md:text-left md:-mt-10 -mt-28 ${
+            inView ? "animate-fade-up [animation-delay:200ms]" : "opacity-0"
+          }`}
+        >
           <h2 className="font-meysha text-5xl md:text-6xl text-mainText mb-12 rotate-[-15deg]">
             {texts.sectionFour.aboutMe}
           </h2>
@@ -70,7 +84,7 @@ const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
               <img
                 src={arrowIcon.src}
                 alt="arrow"
-                className="w-6 h-6"
+                className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
               />
             </button>
           </Link>

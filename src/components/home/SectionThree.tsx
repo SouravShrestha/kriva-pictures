@@ -6,6 +6,7 @@ import arrowIcon from "@/assets/icons/arrow.svg";
 import type { Testimonial } from "@/types/testimonials";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
+import { useInView } from "@/utils/useInView";
 
 interface SectionThreeProps {
   testimonials: Testimonial[];
@@ -22,6 +23,8 @@ const EMPTY_TESTIMONIAL: Testimonial = {
 
 const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
   const [current, setCurrent] = useState(0);
+  const { ref: sectionRef, inView } = useInView(0.1);
+  const { ref: cardRef, inView: cardInView } = useInView(0.1);
 
   const handlePrevious = useCallback(() => {
     if (testimonials.length === 0) return;
@@ -36,7 +39,10 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
   const testimonial = testimonials[current] ?? EMPTY_TESTIMONIAL;
 
   return (
-    <section className="w-full border-t border-borderColor flex flex-col items-center justify-center">
+    <section
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="w-full border-t border-borderColor flex flex-col items-center justify-center"
+    >
       <div className="w-full flex-col items-center justify-center overflow-hidden relative min-h-[60vh]">
         <div className="relative w-full">
           <img
@@ -51,10 +57,18 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
         </div>
         <div className="absolute z-10 flex flex-col items-end justify-center pr-12 pt-8 md:top-10 right-5">
           <div className="text-right">
-            <span className="block text-white text-5xl font-ttjenevers tracking-wide leading-tight">
+            <span
+              className={`block text-white text-5xl font-ttjenevers tracking-wide leading-tight ${
+                inView ? "animate-fade-up" : "opacity-0"
+              }`}
+            >
               LETS DO THINGS
             </span>
-            <span className="block text-white text-5xl font-ttjenevers tracking-wide leading-tight mt-6">
+            <span
+              className={`block text-white text-5xl font-ttjenevers tracking-wide leading-tight mt-6 ${
+                inView ? "animate-fade-up [animation-delay:150ms]" : "opacity-0"
+              }`}
+            >
               a Little{" "}
               <span className="font-meysha text-5xl ml-2">differently</span>
             </span>
@@ -63,7 +77,10 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
       </div>
 
       <div className="ml-1/2 w-full px-8 md:px-0 flex flex-1 justify-center -translate-y-1/4 z-30 flex-col">
-        <div className="flex-row flex items-center gap-4 md:gap-8 justify-center w-full">
+        <div
+          ref={cardRef as React.RefObject<HTMLDivElement>}
+          className="flex-row flex items-center gap-4 md:gap-8 justify-center w-full"
+        >
           <button
             className="md:flex flex-row items-center text-mainText text-lg font-barlow mt-0 hidden"
             onClick={handlePrevious}
@@ -79,7 +96,11 @@ const SectionThree = ({ testimonials, imageUrl }: SectionThreeProps) => {
               <span className="text-xs tracking-widest font-semibold">EV</span>
             </div>
           </button>
-          <div className="flex flex-col md:flex-row bg-mainBg border border-borderColor max-w-5xl z-30 w-full md:h-[422px]">
+          <div
+            className={`flex flex-col md:flex-row bg-mainBg border border-borderColor max-w-5xl z-30 w-full md:h-[422px] ${
+              cardInView ? "animate-scale-in" : "opacity-0"
+            }`}
+          >
             <div className="flex-1 flex flex-col justify-center md:p-8 p-5 pt-8 border-b md:border-b-0 md:border-r border-borderColor items-center md:items-start h-[282px] md:h-[422px]">
               <div className="flex justify-between items-center w-full mb-6">
                 <button

@@ -9,6 +9,7 @@ import starIcon from "@/assets/icons/star.png";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import packagesIcon from "@/assets/icons/packages.png";
 import type { Package } from "@/types/packages";
+import { useInView } from "@/utils/useInView";
 
 interface PackageMainProps {
   packages: Package[];
@@ -18,6 +19,8 @@ const PackageMain = ({ packages }: PackageMainProps) => {
   const [activePackage, setActivePackage] = useState<Package | null>(packages[0] ?? null);
   const [gridCols, setGridCols] = useState(3);
   const topMenuRef = useRef<HTMLDivElement>(null);
+  const { ref: heroRef, inView: heroInView } = useInView(0.1);
+  const { ref: gridRef, inView: gridInView } = useInView(0.1);
 
   useEffect(() => {
     const calculateGridCols = () => {
@@ -58,16 +61,31 @@ const PackageMain = ({ packages }: PackageMainProps) => {
 
   return (
     <div className="min-h-screen bg-mainBg py-8 sm:py-12 lg:py-16">
-      <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-meysha text-mainText mb-6 md:mb-12 leading-relaxed">
+      <div
+        ref={heroRef as React.RefObject<HTMLDivElement>}
+        className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <h1
+          className={`text-4xl sm:text-5xl md:text-6xl font-meysha text-mainText mb-2 md:mb-8 py-6 ${
+            heroInView ? "animate-fade-up" : "opacity-0"
+          }`}
+        >
           Capture Your Story, Beautifully
         </h1>
-        <p className="text-base sm:text-lg text-mainText font-almarai max-w-3xl mx-auto leading-7">
+        <p
+          className={`text-base sm:text-lg text-mainText font-almarai max-w-3xl mx-auto leading-7 ${
+            heroInView ? "animate-fade-up [animation-delay:150ms]" : "opacity-0"
+          }`}
+        >
           We get it, life&apos;s moments are precious. That&apos;s why we&apos;ve
           designed flexible photography packages for every occasion. All delivered
           digitally, beautifully edited, and ready to cherish forever.
         </p>
-        <p className="text-base sm:text-lg text-mainText font-almarai mt-4">
+        <p
+          className={`text-base sm:text-lg text-mainText font-almarai mt-4 ${
+            heroInView ? "animate-fade-up [animation-delay:250ms]" : "opacity-0"
+          }`}
+        >
           For custom quotes and add-ons{" "}
           <Link
             href="/contact"
@@ -85,8 +103,15 @@ const PackageMain = ({ packages }: PackageMainProps) => {
           </div>
         ) : (
           <>
-            <div ref={topMenuRef} className="sm:mb-8 items-center flex justify-center pt-9 md:pt-14 flex-1 w-full">
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-2 gap-y-3 sm:gap-x-4 mb-8 w-full">
+            <div
+              ref={gridRef as React.RefObject<HTMLDivElement>}
+              className="sm:mb-8 items-center flex justify-center pt-9 md:pt-14 flex-1 w-full"
+            >
+              <div
+                className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-2 gap-y-3 sm:gap-x-4 mb-8 w-full ${
+                  gridInView ? "animate-fade-up" : "opacity-0"
+                }`}
+              >
                 {packages.map((pkg) => (
                   <MenuCard
                     key={pkg.id}

@@ -20,7 +20,7 @@ const SlidingNavbar = ({ onClose, onMenuItemClick, navImageUrl }: SlidingNavbarP
 
   return (
     <div
-      className="fixed top-0 right-0 h-full w-full rg:w-[660px] z-50 bg-[#ede7df] transition-all duration-500 border-l border-borderColor flex flex-col justify-between"
+      className="fixed top-0 right-0 h-full w-full rg:w-[660px] z-50 bg-[#ede7df] border-l border-borderColor flex flex-col justify-between animate-slide-in-right"
       onClick={(e) => e.stopPropagation()}
     >
       <button
@@ -61,14 +61,14 @@ const SlidingNavbar = ({ onClose, onMenuItemClick, navImageUrl }: SlidingNavbarP
                 <Link
                   href={link.href}
                   onClick={onMenuItemClick}
-                  className={`font-barlow md:font-ttjenevers text-xl md:text-xl cursor-pointer ${
+                  className={`relative font-barlow md:font-ttjenevers text-xl md:text-xl cursor-pointer pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:transition-all after:duration-300 ${
                     (
                       link.href === "/"
                         ? pathname === "/"
                         : pathname.startsWith(link.href)
                     )
-                      ? "border-b-1.5 border-borderColor"
-                      : "hover:border-b-1.5 border-borderColor"
+                      ? "after:w-full"
+                      : "after:w-0 hover:after:w-full"
                   }`}
                 >
                   {link.label.charAt(0) + link.label.slice(1).toLowerCase()}

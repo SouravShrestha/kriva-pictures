@@ -83,12 +83,11 @@ const Navbar = ({ navImageUrl }: NavbarProps) => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`hover:text-mainText cursor-pointer ${
+                    className={`relative cursor-pointer pb-[4px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:transition-all after:duration-300 ${
                       (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href))
-                        ? "border-b border-borderColor"
-                        : "hover:border-b border-borderColor"
+                        ? "after:w-full"
+                        : "after:w-0 hover:after:w-full"
                     }`}
-                    style={{ paddingBottom: "4px" }}
                   >
                     {link.label}
                   </Link>
@@ -108,7 +107,7 @@ const Navbar = ({ navImageUrl }: NavbarProps) => {
       {showMenu && (
         <>
           <div
-            className="fixed inset-0 z-50 bg-black/60"
+            className="fixed inset-0 z-50 bg-black/60 animate-fade-in"
             onClick={() => setShowMenu(false)}
             aria-label="Close menu overlay"
           />

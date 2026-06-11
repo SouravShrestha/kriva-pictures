@@ -1,19 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import texts from "@/resources/texts";
 import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
+import { useInView } from "@/utils/useInView";
 
 interface SectionTwoProps {
   images: string[];
 }
 
 const SectionTwo = ({ images }: SectionTwoProps) => {
+  const { ref: sectionRef, inView } = useInView(0.1);
+
+  const delays = ["[animation-delay:0ms]", "[animation-delay:150ms]", "[animation-delay:300ms]"];
+
   return (
-    <section className="w-full bg-colorSecondary border-borderColor">
+    <section
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      className="w-full bg-colorSecondary border-borderColor"
+    >
       <div className="mx-auto flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-borderColor">
         {texts.sectionTwo.services.map((s, i) => (
-          <div key={i} className="flex flex-col items-center px-6 py-10 flex-1">
+          <div
+            key={i}
+            className={`flex flex-col items-center px-6 py-10 flex-1 ${
+              inView ? `animate-fade-up ${delays[i] ?? ""}` : "opacity-0"
+            }`}
+          >
             <div className="relative h-64 w-full md:w-64 rounded-sm mb-8">
               <Image
                 src={withCloudinaryOptimization(images[i] ?? "")}
@@ -33,11 +48,15 @@ const SectionTwo = ({ images }: SectionTwoProps) => {
       <div className="w-full border-t border-borderColor flex justify-end items-center md:px-8 px-6 py-4">
         <Link
           href="/packages"
-          className="flex items-center gap-3 text-mainText md:text-[1.25rem] text-[1.10rem] font-ttjenevers tracking-wide hover:underline cursor-pointer"
+          className="cursor-pointer"
         >
-          <span className="flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline uppercase">
+          <span className="relative flex gap-2 text-mainText font-barlow tracking-widest text-base group uppercase pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:w-0 hover:after:w-full after:transition-all after:duration-300">
             {texts.sectionTwo.button}
-            <img src={arrowIcon.src} alt="arrow" className="w-6 h-6" />
+            <img
+              src={arrowIcon.src}
+              alt="arrow"
+              className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
+            />
           </span>
         </Link>
       </div>

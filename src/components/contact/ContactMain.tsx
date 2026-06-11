@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import emailIcon from "@/assets/icons/email.png";
 import phoneIcon from "@/assets/icons/phone.png";
@@ -6,23 +8,37 @@ import fbIcon from "@/assets/icons/fb.png";
 import instaIcon from "@/assets/icons/insta.png";
 import texts from "@/resources/texts";
 import ContactForm from "@/components/footer/ContactForm";
+import { useInView } from "@/utils/useInView";
 
 interface ContactMainProps {
   initialMessage?: string;
 }
 
 const ContactMain = ({ initialMessage }: ContactMainProps) => {
+  const { ref: headingRef, inView } = useInView(0.1);
+
   return (
     <div className="flex flex-col py-10 md:py-20 px-8">
-      <div className="w-full max-w-2xl mx-auto mb-4">
-        <h2 className="text-center font-ttjenevers text-2xl md:text-3xl text-mainText">
+      <div
+        ref={headingRef as React.RefObject<HTMLDivElement>}
+        className="w-full max-w-2xl mx-auto mb-4"
+      >
+        <h2
+          className={`text-center font-ttjenevers text-2xl md:text-3xl text-mainText ${
+            inView ? "animate-fade-up" : "opacity-0"
+          }`}
+        >
           Fill up the form below
           <br />
           and we&apos;ll get back to you as soon as we can.
         </h2>
       </div>
 
-      <div className="w-full max-w-3xl mx-auto md:mb-12 mb-6">
+      <div
+        className={`w-full max-w-3xl mx-auto md:mb-12 mb-6 ${
+          inView ? "animate-fade-up [animation-delay:150ms]" : "opacity-0"
+        }`}
+      >
         <div className="font-almarai text-mainText text-base flex flex-row flex-wrap items-center justify-center gap-1">
           <span>
             Have questions? We may have your answer in our FAQ section. Take a quick look{" "}
@@ -33,7 +49,11 @@ const ContactMain = ({ initialMessage }: ContactMainProps) => {
         </div>
       </div>
 
-      <div className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row md:mt-8">
+      <div
+        className={`w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row md:mt-8 ${
+          inView ? "animate-fade-up [animation-delay:280ms]" : "opacity-0"
+        }`}
+      >
         <div className="w-full md:w-1/3 flex flex-col gap-10 md:p-10 md:border-r border-borderColor text-right md:pr-24 pr-0">
           <div>
             <div className="flex items-center justify-end gap-2 uppercase tracking-wide text-sm mb-2">
