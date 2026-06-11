@@ -1,10 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
-import notificationService from "@/services/notificationService";
-import type { ContactPayload } from "@/services/interfaces/INotificationService";
+import notificationService from "@/api/notification/notificationService";
+import type { ContactPayload } from "@/api/notification/INotificationService";
+import { checkRateLimit } from "@/lib/rateLimiter";
+
+const RATE_LIMIT = { maxRequests: 1, windowMs: 60_000 };
 
 export async function POST(req: NextRequest) {
+  const ip =
+    req.headers.get("cf-connecting-ip") ??
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+    "unknown";
+
+  const { allowed, retryAfterMs } = checkRateLimit(`contact:${ip}`, RATE_LIMIT);
+
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(Math.ceil(retryAfterMs / 1000)) },
+      }
+    );
+  }
+
   try {
-    const body = await req.json() as ContactPayload;
+    const body = (await req.json()) as ContactPayload;
     const { name, phone, message } = body;
 
     if (!name?.trim() || !phone?.trim() || !message?.trim()) {

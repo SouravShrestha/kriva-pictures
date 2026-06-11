@@ -1,4 +1,4 @@
-import type { IImagesService } from "./interfaces/IImagesService";
+import type { IImagesService } from "./IImagesService";
 import cloudinaryImagesService from "./cloudinaryImagesService";
 import localImagesService from "./localImagesService";
 

@@ -5,14 +5,8 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import menuIcon from "@/assets/icons/menu.png";
 import logoIcon from "@/assets/icons/logo.png";
+import { NAV_LINKS } from "@/resources/navLinks";
 import SlidingNavbar from "./SlidingNavbar";
-
-const NAV_LINKS = [
-  { href: "/", label: "HOME" },
-  { href: "/gallery", label: "GALLERY" },
-  { href: "/packages", label: "PACKAGES" },
-  { href: "/contact", label: "CONTACT" },
-];
 
 interface NavbarProps {
   navImageUrl?: string | null;

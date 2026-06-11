@@ -6,7 +6,7 @@ import PackageCard from "./PackageCard";
 import MenuCard from "./MenuCard";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import starIcon from "@/assets/icons/star.png";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import packagesIcon from "@/assets/icons/packages.png";
 import type { Package } from "@/types/packages";
 
@@ -108,7 +108,7 @@ const PackageMain = ({ packages }: PackageMainProps) => {
                   className="flex items-center justify-center h-12 w-12"
                 >
                   <img
-                    src={(arrowIcon as { src: string }).src}
+                    src={arrowIcon.src}
                     alt="Previous"
                     className="w-10 h-10 transform rotate-180"
                   />
@@ -126,7 +126,7 @@ const PackageMain = ({ packages }: PackageMainProps) => {
                   className="flex items-center justify-center w-12 h-12"
                 >
                   <img
-                    src={(arrowIcon as { src: string }).src}
+                    src={arrowIcon.src}
                     alt="Next"
                     className="w-10 h-10 transform"
                   />

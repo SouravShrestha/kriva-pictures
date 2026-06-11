@@ -102,7 +102,7 @@ const FaqMain = ({ categories }: FaqMainProps) => {
             className="inline-flex items-center px-6 py-2 bg-white border-1.5 border-mainText text-mainText tracking-wider uppercase text-sm hover:underline transition-colors duration-300 font-barlow"
           >
             Contact Us
-            <img src={(arrowIcon as { src: string }).src} alt="arrow" className="w-6 h-6 ml-2" />
+            <img src={arrowIcon.src} alt="arrow" className="w-6 h-6 ml-2" />
           </Link>
         </div>
       </div>

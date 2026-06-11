@@ -1,7 +1,7 @@
 import Link from "next/link";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import { getIcon } from "@/utils/iconMapping";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import type { Package } from "@/types/packages";
 
 interface PackageCardProps {
@@ -44,7 +44,7 @@ const PackageCard = ({ pkg }: PackageCardProps) => {
               <span className="text-mainText font-barlow tracking-wide text-lg uppercase">
                 Book YOUR session now
               </span>
-              <img src={(arrowIcon as { src: string }).src} alt="Arrow" className="w-8 h-8" />
+              <img src={arrowIcon.src} alt="Arrow" className="w-8 h-8" />
             </Link>
           </div>
           <div className="mt-6 md:mt-8">

@@ -6,14 +6,8 @@ import instaIcon from "@/assets/icons/insta.png";
 import fbIcon from "@/assets/icons/fb.png";
 import crossIcon from "@/assets/icons/cross.png";
 import texts from "@/resources/texts";
-import ImagePlaceholder from "./ImagePlaceholder";
-
-const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/packages", label: "Packages" },
-  { href: "/contact", label: "Contact" },
-];
+import { NAV_LINKS } from "@/resources/navLinks";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 
 interface SlidingNavbarProps {
   onClose: () => void;
@@ -77,7 +71,7 @@ const SlidingNavbar = ({ onClose, onMenuItemClick, navImageUrl }: SlidingNavbarP
                       : "hover:border-b-1.5 border-borderColor"
                   }`}
                 >
-                  {link.label}
+                  {link.label.charAt(0) + link.label.slice(1).toLowerCase()}
                 </Link>
               </div>
             ))}

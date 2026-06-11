@@ -1,6 +1,6 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/nav/Navbar";
 import PackageMain from "@/components/packages/PackageMain";
-import packagesService from "@/services/packagesService";
+import packagesService from "@/api/packages/packagesService";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

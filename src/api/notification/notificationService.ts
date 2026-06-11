@@ -1,6 +1,14 @@
-import type { INotificationService, ContactPayload } from "./interfaces/INotificationService";
+import type { INotificationService, ContactPayload } from "./INotificationService";
+import { env } from "@/lib/env";
 
-const TELEGRAM_API = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+const TELEGRAM_API = `https://api.telegram.org/bot${env.telegramBotToken}/sendMessage`;
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
 
 const notificationService: INotificationService = {
   async sendContactNotification(payload: ContactPayload): Promise<void> {
@@ -9,15 +17,15 @@ const notificationService: INotificationService = {
     const text = [
       `✨ <b>New Enquiry - Kriva Pictures</b>`,
       ``,
-      `👉 <b>Name:</b> ${name}`,
-      `📞 <b>Phone:</b> ${phone}`,
-      `📧 <b>Email:</b> ${email || "Not provided"}`,
+      `👉 <b>Name:</b> ${escapeHtml(name)}`,
+      `📞 <b>Phone:</b> ${escapeHtml(phone)}`,
+      `📧 <b>Email:</b> ${email ? escapeHtml(email) : "Not provided"}`,
       ``,
       `💭 <b>Message:</b>`,
-      message,
+      escapeHtml(message),
     ].join("\n");
 
-    const chatIds = (process.env.TELEGRAM_CHAT_ID ?? "")
+    const chatIds = env.telegramChatId
       .split(",")
       .map((id) => id.trim())
       .filter(Boolean);
@@ -41,3 +49,4 @@ const notificationService: INotificationService = {
 };
 
 export default notificationService;
+

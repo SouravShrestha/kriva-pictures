@@ -1,4 +1,4 @@
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import type { Package } from "@/types/packages";
 
 interface MenuCardProps {

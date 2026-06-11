@@ -1,12 +1,12 @@
-import bannerService from "@/services/bannerService";
-import imagesService from "@/services/imagesService";
+import bannerService from "@/api/banner/bannerService";
+import imagesService from "@/api/images/imagesService";
 import SplideBanner from "@/components/home/SplideBanner";
 import SectionOne from "@/components/home/SectionOne";
 import SectionTwo from "@/components/home/SectionTwo";
 import SectionThree from "@/components/home/SectionThree";
 import SectionFour from "@/components/home/SectionFour";
-import MovingTextBanner from "@/components/MovingTextBanner";
-import Navbar from "@/components/Navbar";
+import MovingTextBanner from "@/components/shared/MovingTextBanner";
+import Navbar from "@/components/nav/Navbar";
 import testimonialsData from "@/data/testimonials.json";
 import sectionImageTags from "@/data/images.json";
 import type { Testimonial } from "@/types/testimonials";

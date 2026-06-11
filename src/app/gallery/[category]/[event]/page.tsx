@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import galleryService, { fetchEventImages } from "@/services/galleryService";
+import Navbar from "@/components/nav/Navbar";
+import galleryService from "@/api/gallery/galleryService";
 import GalleryView from "@/components/gallery/GalleryView";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -28,7 +28,7 @@ export default async function GalleryViewPage({ params }: Props) {
 
   const [event, images] = await Promise.all([
     galleryService.resolveEventBySlug(categorySlug, eventSlug),
-    fetchEventImages(categorySlug, eventSlug),
+    galleryService.getEventImages(categorySlug, eventSlug),
   ]);
 
   if (!event) notFound();

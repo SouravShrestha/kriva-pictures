@@ -1,7 +1,8 @@
 "use client";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
+import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 
 interface FooterGalleryProps {
   images: string[];
@@ -62,11 +63,12 @@ const FooterGallery = ({ images }: FooterGalleryProps) => {
             <SplideSlide key={images.length + idx}>
               <div className="relative">
                 <img
-                  src={img}
+                  src={withCloudinaryOptimization(img)}
                   alt={`Footer Gallery ${idx + 1}`}
-                  className="object-cover object-center transition-all duration-2000 h-44 w-44 md:h-72 md:w-72 lg:h-72 lg:w-72 relative z-10"
+                  loading="lazy"
+                  className="object-cover object-center h-44 w-44 md:h-72 md:w-72 relative z-10"
                 />
-                <div className="h-44 w-44 md:h-72 md:w-72 lg:h-72 lg:w-72 absolute top-0 bg-colorSecondary">
+                <div className="h-44 w-44 md:h-72 md:w-72 absolute top-0 bg-colorSecondary">
                   <ImagePlaceholder />
                 </div>
               </div>

@@ -1,16 +1,17 @@
+import { cache } from "react";
 import cloudinaryClient from "@/lib/cloudinary";
 import galleryData from "@/data/gallery.json";
 import type { GalleryCategoryConfig, GalleryCategory, GalleryEvent } from "@/types/gallery";
-import type { IGalleryService } from "./interfaces/IGalleryService";
+import type { IGalleryService } from "./IGalleryService";
 
-const categories = galleryData.categories as GalleryCategoryConfig[];
+const categories = galleryData.categories satisfies GalleryCategoryConfig[];
 
 interface FolderResources {
   coverImage: string;
   images: string[];
 }
 
-async function fetchFolderResources(folderPath: string): Promise<FolderResources> {
+const fetchFolderResources = cache(async (folderPath: string): Promise<FolderResources> => {
   const all: { publicId: string; secureUrl: string }[] = [];
   let nextCursor: string | undefined;
 
@@ -36,7 +37,7 @@ async function fetchFolderResources(folderPath: string): Promise<FolderResources
   const coverImage = coverEntry?.secureUrl ?? images[0] ?? "";
 
   return { coverImage, images };
-}
+});
 
 async function resolveEvent(
   cloudinaryFolder: string,
@@ -46,14 +47,6 @@ async function resolveEvent(
 ): Promise<GalleryEvent> {
   const { coverImage } = await fetchFolderResources(`${cloudinaryFolder}/${slug}`);
   return { slug, name, date, coverImage };
-}
-
-export async function fetchEventImages(categorySlug: string, eventSlug: string): Promise<string[]> {
-  const cat = categories.find((c) => c.slug === categorySlug);
-  if (!cat) return [];
-
-  const { images } = await fetchFolderResources(`${cat.cloudinaryFolder}/${eventSlug}`);
-  return images;
 }
 
 const galleryService: IGalleryService = {
@@ -113,10 +106,11 @@ const galleryService: IGalleryService = {
     return resolveEvent(cat.cloudinaryFolder, eventConfig.slug, eventConfig.name, eventConfig.date);
   },
 
-  async getEventImageUrls(event: GalleryEvent): Promise<string[]> {
-    const cat = categories.find((c) => c.events.some((e) => e.slug === event.slug));
+  async getEventImages(categorySlug: string, eventSlug: string): Promise<string[]> {
+    const cat = categories.find((c) => c.slug === categorySlug);
     if (!cat) return [];
-    return fetchEventImages(cat.slug, event.slug);
+    const { images } = await fetchFolderResources(`${cat.cloudinaryFolder}/${eventSlug}`);
+    return images;
   },
 };
 
