@@ -123,6 +123,15 @@ const ContactFormInner = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(form),
         });
+        if (res.status === 429) {
+          const retryAfter = res.headers.get("Retry-After");
+          const seconds = retryAfter ? parseInt(retryAfter, 10) : 60;
+          setSubmitMessage({
+            type: "error",
+            text: `Too many submissions. Please wait ${seconds} second${seconds !== 1 ? "s" : ""} before trying again.`,
+          });
+          return;
+        }
         if (!res.ok) throw new Error();
         setSubmitMessage({
           type: "success",
