@@ -2,6 +2,13 @@ import type { INotificationService, ContactPayload } from "./INotificationServic
 
 const TELEGRAM_API = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 const notificationService: INotificationService = {
   async sendContactNotification(payload: ContactPayload): Promise<void> {
     const { name, email, phone, message } = payload;
@@ -9,12 +16,12 @@ const notificationService: INotificationService = {
     const text = [
       `✨ <b>New Enquiry - Kriva Pictures</b>`,
       ``,
-      `👉 <b>Name:</b> ${name}`,
-      `📞 <b>Phone:</b> ${phone}`,
-      `📧 <b>Email:</b> ${email || "Not provided"}`,
+      `👉 <b>Name:</b> ${escapeHtml(name)}`,
+      `📞 <b>Phone:</b> ${escapeHtml(phone)}`,
+      `📧 <b>Email:</b> ${email ? escapeHtml(email) : "Not provided"}`,
       ``,
       `💭 <b>Message:</b>`,
-      message,
+      escapeHtml(message),
     ].join("\n");
 
     const chatIds = (process.env.TELEGRAM_CHAT_ID ?? "")
@@ -41,3 +48,4 @@ const notificationService: INotificationService = {
 };
 
 export default notificationService;
+
