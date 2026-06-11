@@ -7,6 +7,7 @@ import { formatEventDate } from "@/utils/dateUtils";
 import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import ArrowIcon from "@/components/shared/ArrowIcon";
 import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
+import { useInView } from "@/utils/useInView";
 import type { GalleryEvent } from "@/types/gallery";
 
 interface GalleryViewProps {
@@ -15,9 +16,43 @@ interface GalleryViewProps {
   categorySlug: string;
 }
 
+const GalleryImage = ({
+  imgUrl,
+  idx,
+  onClick,
+}: {
+  imgUrl: string;
+  idx: number;
+  onClick: () => void;
+}) => {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div
+      className="relative cursor-pointer group"
+      onClick={onClick}
+    >
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-colorSecondary z-0 min-h-32 min-w-64">
+        <ImagePlaceholder />
+      </div>
+      <img
+        src={withCloudinaryOptimization(imgUrl)}
+        alt={`gallery-img-${idx}`}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        className={`relative z-10 transition-all duration-500 group-hover:opacity-90 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ width: "100%", display: "block" }}
+      />
+    </div>
+  );
+};
+
 const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
   const eventDateStr = formatEventDate(event.date);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const { ref: headerRef, inView: headerInView } = useInView(0.1);
 
   const openLightbox = (idx: number) => setLightboxIndex(idx);
   const closeLightbox = () => setLightboxIndex(null);
@@ -55,68 +90,75 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
   return (
     <>
       <div className="flex flex-col min-h-screen bg-mainBg pb-16">
-        <div className="flex flex-col md:flex-row items-center justify-between md:px-8 md:py-6 md:min-h-64">
+        <div
+          ref={headerRef as React.RefObject<HTMLDivElement>}
+          className="flex flex-col items-center px-8 pt-12 md:pt-16 pb-6"
+        >
           <Link
-            href={`/gallery`}
-            className="flex items-center gap-2 md:border-r pr-20 border-borderColor hover:underline py-10 cursor-pointer"
+            href="/gallery"
+            className={`relative inline-flex items-center gap-3 mb-8 font-barlow text-xs tracking-[0.2em] uppercase text-mainText/80 hover:text-mainText transition-colors duration-300 pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:w-0 hover:after:w-full after:transition-all after:duration-300 ${
+              headerInView ? "animate-fade-up" : "opacity-0"
+            }`}
           >
-            <ArrowIcon className="w-8 h-4 rotate-180" />
-            <span className="font-ttjenevers text-base tracking-wide ml-4 uppercase">
-              Back to gallery
-            </span>
+            <ArrowIcon className="w-5 h-3 rotate-180" />
+            Back to gallery
           </Link>
-          <div className="flex-1 flex flex-col items-center md:py-8 mt-4 px-8">
-            <span className="font-meysha font-medium text-4xl md:text-5xl text-center">
-              {event.name}
-            </span>
-            <span className="text-base mt-4 font-almarai tracking-wide mb-10">
-              {eventDateStr}
-            </span>
-          </div>
-          <div className="w-40" />
+
+          <h1
+            className={`font-meysha text-4xl md:text-5xl text-mainText text-center leading-loose py-1 ${
+              headerInView ? "animate-fade-up [animation-delay:100ms]" : "opacity-0"
+            }`}
+          >
+            {event.name}
+          </h1>
+
+          <span
+            className={`text-sm mt-3 font-almarai tracking-[0.15em] uppercase text-mainText/70 ${
+              headerInView ? "animate-fade-up [animation-delay:180ms]" : "opacity-0"
+            }`}
+          >
+            {eventDateStr}
+          </span>
+
+          <div
+            className={`mt-8 w-16 h-px bg-borderColor/20 ${
+              headerInView ? "animate-fade-in [animation-delay:250ms]" : "opacity-0"
+            }`}
+          />
         </div>
 
         {images.length === 0 ? (
           <div className="flex justify-center items-center py-20 h-[40vh]">
-            <p className="font-almarai text-mainText">
+            <p className="font-almarai text-mainText/50 tracking-wide">
               No images available for this event yet.
             </p>
           </div>
         ) : (
-          <ResponsiveMasonry
-            columnsCountBreakPoints={{ 350: 1, 900: 2, 1400: 3, 1800: 4 }}
-          >
-            <Masonry gutter="8px">
-              {images.map((imgUrl, idx) => (
-                <div
-                  key={idx}
-                  className="relative cursor-pointer group"
-                  onClick={() => openLightbox(idx)}
-                >
-                  <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-colorSecondary z-0 min-h-32 min-w-64">
-                    <ImagePlaceholder />
-                  </div>
-                  <img
-                    src={withCloudinaryOptimization(imgUrl)}
-                    alt={`gallery-img-${idx}`}
-                    loading="lazy"
-                    className="relative z-10 transition-opacity duration-200 group-hover:opacity-85"
-                    style={{ width: "100%", display: "block" }}
+          <div className="px-2 md:px-4">
+            <ResponsiveMasonry
+              columnsCountBreakPoints={{ 350: 1, 900: 2, 1400: 3, 1800: 4 }}
+            >
+              <Masonry gutter="6px">
+                {images.map((imgUrl, idx) => (
+                  <GalleryImage
+                    key={idx}
+                    imgUrl={imgUrl}
+                    idx={idx}
+                    onClick={() => openLightbox(idx)}
                   />
-                </div>
-              ))}
-            </Masonry>
-          </ResponsiveMasonry>
+                ))}
+              </Masonry>
+            </ResponsiveMasonry>
+          </div>
         )}
       </div>
 
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center animate-fade-in"
           style={{ backgroundColor: "rgba(0,0,0,0.92)" }}
           onClick={closeLightbox}
         >
-          {/* Close button */}
           <button
             onClick={closeLightbox}
             className="absolute top-5 right-6 text-white text-4xl leading-none hover:opacity-70 transition-opacity z-10"
@@ -125,12 +167,10 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
             &times;
           </button>
 
-          {/* Counter */}
-          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-white/60 text-sm font-almarai tracking-widest">
+          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-white/50 text-xs font-barlow tracking-[0.2em] px-4 py-1.5 rounded-full backdrop-blur-sm">
             {lightboxIndex + 1} / {images.length}
           </span>
 
-          {/* Prev button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -142,16 +182,14 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
             <ArrowIcon className="w-8 h-4 rotate-180 text-white" />
           </button>
 
-          {/* Image */}
           <img
             src={withCloudinaryOptimization(images[lightboxIndex])}
             alt={`fullscreen-${lightboxIndex}`}
             loading="eager"
-            className="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl"
+            className="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           />
 
-          {/* Next button */}
           <button
             onClick={(e) => {
               e.stopPropagation();

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { GalleryCategory } from "@/types/gallery";
 import SubfolderCard from "./SubfolderCard";
+import { useInView } from "@/utils/useInView";
 
 interface GalleryMainProps {
   categories: GalleryCategory[];
@@ -10,33 +11,43 @@ interface GalleryMainProps {
 
 const GalleryMain = ({ categories }: GalleryMainProps) => {
   const [activeTab, setActiveTab] = useState<string>(categories[0]?.slug ?? "");
+  const { ref: tabRef, inView: tabInView } = useInView(0.1);
+  const { ref: gridRef, inView: gridInView } = useInView(0.05);
 
   const activeCategory = categories.find((c) => c.slug === activeTab);
   const subfolders = activeCategory?.events ?? [];
 
   return (
     <div className="min-h-screen bg-mainBg">
-      {/* ── Category Tab Bar ── */}
       {categories.length > 0 && (
-        <div className="px-6 md:px-16 pt-14 pb-10">
-          {/* Eyebrow label */}
-          <p className="font-almarai text-xs tracking-[0.25em] uppercase text-mainText mb-6 text-center">
+        <div
+          ref={tabRef as React.RefObject<HTMLDivElement>}
+          className="px-6 md:px-16 pt-14 pb-10"
+        >
+          <p
+            className={`font-almarai text-xs tracking-[0.25em] uppercase text-mainText/60 mb-8 text-center ${
+              tabInView ? "animate-fade-up" : "opacity-0"
+            }`}
+          >
             Browse by collection
           </p>
 
-          {/* Tabs */}
-          <div className="flex justify-center gap-3 flex-wrap">
+          <div
+            className={`flex justify-center gap-8 md:gap-12 flex-wrap ${
+              tabInView ? "animate-fade-up [animation-delay:100ms]" : "opacity-0"
+            }`}
+          >
             {categories.map((tab) => {
-              const isActive = activeTab === tab.name;
+              const isActive = activeTab === tab.slug;
               return (
                 <button
                   key={tab.slug}
                   onClick={() => setActiveTab(tab.slug)}
                   title={tab.name}
-                  className={`relative px-7 py-2.5 font-barlow text-sm tracking-[0.15em] uppercase transition-all duration-300 border ${
+                  className={`relative pb-[6px] font-barlow text-sm tracking-[0.15em] uppercase transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:transition-all after:duration-300 ${
                     isActive
-                      ? "bg-mainText text-mainBg border-mainText"
-                      : "bg-transparent text-mainText border-mainText/40 hover:border-mainText hover:text-mainText"
+                      ? "text-mainText after:w-full"
+                      : "text-mainText/90 hover:text-mainText after:w-0 hover:after:w-full"
                   }`}
                 >
                   {tab.name.charAt(0).toUpperCase() +
@@ -46,13 +57,18 @@ const GalleryMain = ({ categories }: GalleryMainProps) => {
             })}
           </div>
 
-          {/* Thin divider */}
-          <div className="mt-10 h-px bg-mainText/10" />
+          <div
+            className={`mt-10 h-px bg-borderColor/10 ${
+              tabInView ? "animate-fade-in [animation-delay:200ms]" : "opacity-0"
+            }`}
+          />
         </div>
       )}
 
-      {/* ── Event Grid ── */}
-      <div className="px-6 md:px-12 lg:px-16 pb-24">
+      <div
+        ref={gridRef as React.RefObject<HTMLDivElement>}
+        className="px-6 md:px-12 lg:px-16 pb-24"
+      >
         {subfolders.length === 0 ? (
           <div className="flex items-center justify-center py-32">
             <p className="font-almarai text-mainText/50 tracking-wide">
@@ -60,13 +76,18 @@ const GalleryMain = ({ categories }: GalleryMainProps) => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 rg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
-            {subfolders.map((event) => (
-              <SubfolderCard
+          <div className="grid grid-cols-1 rg:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+            {subfolders.map((event, i) => (
+              <div
                 key={event.slug}
-                event={event}
-                categorySlug={activeCategory?.slug ?? ""}
-              />
+                className={gridInView ? `animate-fade-up` : "opacity-0"}
+                style={gridInView ? { animationDelay: `${Math.min(i * 80, 400)}ms` } : undefined}
+              >
+                <SubfolderCard
+                  event={event}
+                  categorySlug={activeCategory?.slug ?? ""}
+                />
+              </div>
             ))}
           </div>
         )}
