@@ -28,7 +28,7 @@ const SlidingNavbar = ({ onClose, onMenuItemClick, navImageUrl }: SlidingNavbarP
         className="absolute top-8 right-8 hover:scale-110 transition-transform z-50"
         aria-label="Close menu"
       >
-        <img src={crossIcon.src} alt="Close" className="w-7 h-7" />
+        <img src={crossIcon.src} alt="Close" className="w-5 h-5" />
       </button>
       <div className="flex flex-col md:flex-row flex-1 md:flex-0 p-8">
         <h2 className="font-meysha text-4xl md:hidden mt-[8vh] text-left tracking-wide">

@@ -1,5 +1,6 @@
 import { cache } from "react";
 import cloudinaryClient from "@/lib/cloudinary";
+import { withEnvFolder } from "@/lib/cloudinaryEnv";
 import galleryData from "@/data/gallery.json";
 import type { GalleryCategoryConfig, GalleryCategory, GalleryEvent } from "@/types/gallery";
 import type { IGalleryService } from "./IGalleryService";
@@ -45,7 +46,7 @@ async function resolveEvent(
   name: string,
   date: string
 ): Promise<GalleryEvent> {
-  const { coverImage } = await fetchFolderResources(`${cloudinaryFolder}/${slug}`);
+  const { coverImage } = await fetchFolderResources(`${withEnvFolder(cloudinaryFolder)}/${slug}`);
   return { slug, name, date, coverImage };
 }
 
@@ -109,7 +110,7 @@ const galleryService: IGalleryService = {
   async getEventImages(categorySlug: string, eventSlug: string): Promise<string[]> {
     const cat = categories.find((c) => c.slug === categorySlug);
     if (!cat) return [];
-    const { images } = await fetchFolderResources(`${cat.cloudinaryFolder}/${eventSlug}`);
+    const { images } = await fetchFolderResources(`${withEnvFolder(cat.cloudinaryFolder)}/${eventSlug}`);
     return images;
   },
 };

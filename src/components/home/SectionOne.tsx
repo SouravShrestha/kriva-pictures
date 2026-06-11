@@ -24,7 +24,7 @@ const SectionOne = ({ imageUrl }: SectionOneProps) => {
           inView ? "animate-fade-in" : "opacity-0"
         }`}
       >
-        <div className="relative w-full h-72 rg:h-[calc(100vh-64px)]">
+        <div className="relative w-full h-72 rg:h-[calc(100vh-48px)]">
           <Image
             src={withCloudinaryOptimization(imageUrl ?? "")}
             alt="Celebration"

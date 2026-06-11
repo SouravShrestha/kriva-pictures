@@ -9,6 +9,7 @@ import ArrowIcon from "@/components/shared/ArrowIcon";
 import { withCloudinaryOptimization } from "@/utils/cloudinaryUtils";
 import { useInView } from "@/utils/useInView";
 import type { GalleryEvent } from "@/types/gallery";
+import crossIcon from "@/assets/icons/cross-light.png";
 
 interface GalleryViewProps {
   event: GalleryEvent;
@@ -106,7 +107,9 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
 
           <h1
             className={`font-meysha text-4xl md:text-5xl text-mainText text-center leading-loose py-1 ${
-              headerInView ? "animate-fade-up [animation-delay:100ms]" : "opacity-0"
+              headerInView
+                ? "animate-fade-up [animation-delay:100ms]"
+                : "opacity-0"
             }`}
           >
             {event.name}
@@ -114,7 +117,9 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
 
           <span
             className={`text-sm mt-3 font-almarai tracking-[0.15em] uppercase text-mainText/70 ${
-              headerInView ? "animate-fade-up [animation-delay:180ms]" : "opacity-0"
+              headerInView
+                ? "animate-fade-up [animation-delay:180ms]"
+                : "opacity-0"
             }`}
           >
             {eventDateStr}
@@ -122,7 +127,9 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
 
           <div
             className={`mt-8 w-16 h-px bg-borderColor/20 ${
-              headerInView ? "animate-fade-in [animation-delay:250ms]" : "opacity-0"
+              headerInView
+                ? "animate-fade-in [animation-delay:250ms]"
+                : "opacity-0"
             }`}
           />
         </div>
@@ -161,13 +168,13 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
         >
           <button
             onClick={closeLightbox}
-            className="absolute top-5 right-6 text-white text-4xl leading-none hover:opacity-70 transition-opacity z-10"
-            aria-label="Close"
+            className="absolute top-5 right-6 hover:scale-110 transition-transform z-50"
+            aria-label="Close menu"
           >
-            &times;
+            <img src={crossIcon.src} alt="Close" className="w-6 h-6" />
           </button>
 
-          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-white/50 text-xs font-barlow tracking-[0.2em] px-4 py-1.5 rounded-full backdrop-blur-sm">
+          <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 text-white/90 text-xs font-barlow tracking-[0.2em] px-4 py-1.5">
             {lightboxIndex + 1} / {images.length}
           </span>
 

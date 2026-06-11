@@ -1,15 +1,17 @@
 import cloudinaryClient from "@/lib/cloudinary";
+import { withEnvFolder } from "@/lib/cloudinaryEnv";
 import type { IBannerService } from "./IBannerService";
 
 const bannerService: IBannerService = {
   async fetchImageUrls(folderName: string): Promise<string[]> {
+    const folder = withEnvFolder(folderName);
     const allUrls: string[] = [];
     let nextCursor: string | undefined = undefined;
 
     try {
       do {
         const result = await cloudinaryClient.search({
-          expression: `folder:"${folderName}"`,
+          expression: `folder:"${folder}"`,
           max_results: 100,
           next_cursor: nextCursor,
         });

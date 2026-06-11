@@ -32,7 +32,7 @@ const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
         </div>
       </div>
       <div className="md:w-2/3 w-full p-8 flex flex-col md:flex-row items-center justify-center gap-x-28">
-        <div className="flex flex-col items-end">
+        <div className="flex flex-col items-end z-20">
           <div
             className={`relative ${inView ? "animate-scale-in" : "opacity-0"}`}
           >
@@ -90,7 +90,7 @@ const SectionFour = ({ imageUrl4a, imageUrl4b }: SectionFourProps) => {
           </Link>
         </div>
       </div>
-      <div className="w-1/3 md:flex items-center justify-end hidden">
+      <div className="w-1/3 md:flex items-center justify-end hidden z-10">
         <div className="relative w-full">
           <img
             src={withCloudinaryOptimization(imageUrl4b ?? "")}

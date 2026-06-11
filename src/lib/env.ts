@@ -10,4 +10,5 @@ export const env = {
   cloudinaryApiSecret: requireEnv("CLOUDINARY_API_SECRET"),
   telegramBotToken: requireEnv("TELEGRAM_BOT_TOKEN"),
   telegramChatId: requireEnv("TELEGRAM_CHAT_ID"),
+  appEnv: process.env.NEXT_PUBLIC_ENV ?? "PRODUCTION",
 };
