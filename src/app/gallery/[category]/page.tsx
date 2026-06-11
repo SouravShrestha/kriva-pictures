@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar";
-import galleryService from "@/services/galleryService";
+import Navbar from "@/components/nav/Navbar";
+import galleryService from "@/api/gallery/galleryService";
 import CategoryView from "@/components/gallery/CategoryView";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";

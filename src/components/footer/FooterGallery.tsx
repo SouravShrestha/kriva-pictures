@@ -1,7 +1,7 @@
 "use client";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 
 interface FooterGalleryProps {
   images: string[];

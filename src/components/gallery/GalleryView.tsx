@@ -5,7 +5,7 @@ import Link from "next/link";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { formatEventDate } from "@/utils/dateUtils";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import type { GalleryEvent } from "@/types/gallery";
 
 interface GalleryViewProps {

@@ -1,5 +1,5 @@
 import cloudinaryClient from "@/lib/cloudinary";
-import type { IImagesService } from "./interfaces/IImagesService";
+import type { IImagesService } from "./IImagesService";
 
 const FOLDER = "kp-sections";
 
@@ -30,10 +30,8 @@ async function fetchAllSectionResources(): Promise<{ publicId: string; secureUrl
 const cloudinaryImagesService: IImagesService = {
   async getImagesByTag(tag: string): Promise<string[]> {
     const resources = await fetchAllSectionResources();
-    const prefix = tag;
-    
     return resources
-      .filter((r) => r.publicId.startsWith(prefix))
+      .filter((r) => r.publicId.startsWith(tag))
       .map((r) => r.secureUrl);
   },
 

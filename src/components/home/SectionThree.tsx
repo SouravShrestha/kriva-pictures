@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import quoteIcon from "@/assets/icons/quote.png";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import type { Testimonial } from "@/types/testimonials";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 
 interface SectionThreeProps {
   testimonials: Testimonial[];

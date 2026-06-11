@@ -1,5 +1,5 @@
 import imagesData from "@/data/images.json";
-import type { IImagesService } from "./interfaces/IImagesService";
+import type { IImagesService } from "./IImagesService";
 
 const sectionImageMap = imagesData.sectionImages as Record<string, string>;
 

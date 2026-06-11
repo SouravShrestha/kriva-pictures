@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import notificationService from "@/services/notificationService";
-import type { ContactPayload } from "@/services/interfaces/INotificationService";
+import notificationService from "@/api/notification/notificationService";
+import type { ContactPayload } from "@/api/notification/INotificationService";
 
 export async function POST(req: NextRequest) {
   try {

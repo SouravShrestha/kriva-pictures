@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/footer/Footer";
-import bannerService from "@/services/bannerService";
+import bannerService from "@/api/banner/bannerService";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.krivapictures.com.au"),

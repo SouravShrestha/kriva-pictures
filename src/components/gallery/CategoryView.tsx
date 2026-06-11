@@ -35,12 +35,11 @@ const CategoryView = ({ category, categorySlug }: CategoryViewProps) => {
             <p className="font-almarai text-mainText">No events in this category yet.</p>
           </div>
         ) : (
-          category.events.map((event, idx) => (
+          category.events.map((event) => (
             <SubfolderCard
               key={event.slug}
               event={event}
               categorySlug={categorySlug}
-              reverse={idx % 2 !== 1}
             />
           ))
         )}

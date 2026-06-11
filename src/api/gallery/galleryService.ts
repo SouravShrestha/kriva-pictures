@@ -1,7 +1,7 @@
 import cloudinaryClient from "@/lib/cloudinary";
 import galleryData from "@/data/gallery.json";
 import type { GalleryCategoryConfig, GalleryCategory, GalleryEvent } from "@/types/gallery";
-import type { IGalleryService } from "./interfaces/IGalleryService";
+import type { IGalleryService } from "./IGalleryService";
 
 const categories = galleryData.categories as GalleryCategoryConfig[];
 
@@ -46,14 +46,6 @@ async function resolveEvent(
 ): Promise<GalleryEvent> {
   const { coverImage } = await fetchFolderResources(`${cloudinaryFolder}/${slug}`);
   return { slug, name, date, coverImage };
-}
-
-export async function fetchEventImages(categorySlug: string, eventSlug: string): Promise<string[]> {
-  const cat = categories.find((c) => c.slug === categorySlug);
-  if (!cat) return [];
-
-  const { images } = await fetchFolderResources(`${cat.cloudinaryFolder}/${eventSlug}`);
-  return images;
 }
 
 const galleryService: IGalleryService = {
@@ -116,7 +108,14 @@ const galleryService: IGalleryService = {
   async getEventImageUrls(event: GalleryEvent): Promise<string[]> {
     const cat = categories.find((c) => c.events.some((e) => e.slug === event.slug));
     if (!cat) return [];
-    return fetchEventImages(cat.slug, event.slug);
+    return this.getEventImages(cat.slug, event.slug);
+  },
+
+  async getEventImages(categorySlug: string, eventSlug: string): Promise<string[]> {
+    const cat = categories.find((c) => c.slug === categorySlug);
+    if (!cat) return [];
+    const { images } = await fetchFolderResources(`${cat.cloudinaryFolder}/${eventSlug}`);
+    return images;
   },
 };
 

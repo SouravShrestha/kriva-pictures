@@ -1,6 +1,6 @@
 import faqData from "@/data/faqs.json";
 import type { FaqCategory } from "@/types/faq";
-import type { IFaqService } from "./interfaces/IFaqService";
+import type { IFaqService } from "./IFaqService";
 
 const faqService: IFaqService = {
   getCategories(): FaqCategory[] {

@@ -2,16 +2,15 @@
 
 import Link from "next/link";
 import { formatEventDate } from "@/utils/dateUtils";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import type { GalleryEvent } from "@/types/gallery";
 
 interface SubfolderCardProps {
   event: GalleryEvent;
   categorySlug: string;
-  reverse?: boolean;
 }
 
-const SubfolderCard = ({ event, categorySlug, reverse }: SubfolderCardProps) => {
+const SubfolderCard = ({ event, categorySlug }: SubfolderCardProps) => {
   const eventDateStr = formatEventDate(event.date);
   const galleryPath = `/gallery/${categorySlug}/${event.slug}`;
 

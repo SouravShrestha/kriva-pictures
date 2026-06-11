@@ -1,6 +1,6 @@
-import Navbar from "@/components/Navbar";
-import bannerService from "@/services/bannerService";
-import galleryService from "@/services/galleryService";
+import Navbar from "@/components/nav/Navbar";
+import bannerService from "@/api/banner/bannerService";
+import galleryService from "@/api/gallery/galleryService";
 import SplideGalleryBanner from "@/components/gallery/SplideGalleryBanner";
 import GalleryMain from "@/components/gallery/GalleryMain";
 import type { Metadata } from "next";

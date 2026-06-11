@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/nav/Navbar";
 import ContactMain from "@/components/contact/ContactMain";
 import type { Metadata } from "next";
 

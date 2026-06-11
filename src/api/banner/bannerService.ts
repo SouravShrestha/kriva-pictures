@@ -1,5 +1,5 @@
 import cloudinaryClient from "@/lib/cloudinary";
-import type { IBannerService } from "./interfaces/IBannerService";
+import type { IBannerService } from "./IBannerService";
 
 const bannerService: IBannerService = {
   async fetchImageUrls(folderName: string): Promise<string[]> {

@@ -1,6 +1,6 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/nav/Navbar";
 import FaqMain from "@/components/faq/FaqMain";
-import faqService from "@/services/faqService";
+import faqService from "@/api/faq/faqService";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

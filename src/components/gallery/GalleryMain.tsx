@@ -9,9 +9,9 @@ interface GalleryMainProps {
 }
 
 const GalleryMain = ({ categories }: GalleryMainProps) => {
-  const [activeTab, setActiveTab] = useState<string>(categories[0]?.name ?? "");
+  const [activeTab, setActiveTab] = useState<string>(categories[0]?.slug ?? "");
 
-  const activeCategory = categories.find((c) => c.name === activeTab);
+  const activeCategory = categories.find((c) => c.slug === activeTab);
   const subfolders = activeCategory?.events ?? [];
 
   return (
@@ -31,7 +31,7 @@ const GalleryMain = ({ categories }: GalleryMainProps) => {
               return (
                 <button
                   key={tab.slug}
-                  onClick={() => setActiveTab(tab.name)}
+                  onClick={() => setActiveTab(tab.slug)}
                   title={tab.name}
                   className={`relative px-7 py-2.5 font-barlow text-sm tracking-[0.15em] uppercase transition-all duration-300 border ${
                     isActive

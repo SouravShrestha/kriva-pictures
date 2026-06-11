@@ -6,7 +6,7 @@ import PackageCard from "./PackageCard";
 import MenuCard from "./MenuCard";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import starIcon from "@/assets/icons/star.png";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import packagesIcon from "@/assets/icons/packages.png";
 import type { Package } from "@/types/packages";
 

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Splide from "@splidejs/splide";
 import { Grid } from "@splidejs/splide-extension-grid";
 import "@splidejs/splide/dist/css/splide.min.css";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 
 interface SplideGalleryBannerProps {
   images: string[];

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import arrowIcon from "@/assets/icons/arrow.svg";
 import { getIcon } from "@/utils/iconMapping";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 import type { Package } from "@/types/packages";
 
 interface PackageCardProps {

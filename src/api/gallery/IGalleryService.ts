@@ -7,4 +7,5 @@ export interface IGalleryService {
   resolveCategoryBySlug(categorySlug: string): Promise<GalleryCategory | null>;
   resolveEventBySlug(categorySlug: string, eventSlug: string): Promise<GalleryEvent | null>;
   getEventImageUrls(event: GalleryEvent): Promise<string[]>;
+  getEventImages(categorySlug: string, eventSlug: string): Promise<string[]>;
 }

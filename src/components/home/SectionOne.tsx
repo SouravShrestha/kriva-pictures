@@ -1,7 +1,7 @@
 import Link from "next/link";
 import texts from "@/resources/texts";
 import arrowIcon from "@/assets/icons/arrow.svg";
-import ImagePlaceholder from "@/components/ImagePlaceholder";
+import ImagePlaceholder from "@/components/shared/ImagePlaceholder";
 
 interface SectionOneProps {
   imageUrl: string | null;
