@@ -96,7 +96,7 @@ const GalleryView = ({ event, images, categorySlug }: GalleryViewProps) => {
         >
           <Link
             href="/gallery"
-            className={`relative inline-flex items-center gap-3 mb-8 font-barlow text-xs tracking-[0.2em] uppercase text-mainText/80 hover:text-mainText transition-colors duration-300 pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:w-0 hover:after:w-full after:transition-all after:duration-300 ${
+            className={`inline-flex items-center gap-3 mb-8 font-barlow text-xs tracking-[0.2em] uppercase text-mainText/50 hover:text-mainText hover:underline transition-colors duration-300 ${
               headerInView ? "animate-fade-up" : "opacity-0"
             }`}
           >

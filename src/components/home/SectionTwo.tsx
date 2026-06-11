@@ -50,7 +50,7 @@ const SectionTwo = ({ images }: SectionTwoProps) => {
           href="/packages"
           className="cursor-pointer"
         >
-          <span className="relative flex gap-2 text-mainText font-barlow tracking-widest text-base group uppercase pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:w-0 hover:after:w-full after:transition-all after:duration-300">
+          <span className="flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline uppercase">
             {texts.sectionTwo.button}
             <img
               src={arrowIcon.src}

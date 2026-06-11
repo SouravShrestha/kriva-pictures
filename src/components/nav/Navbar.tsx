@@ -83,11 +83,12 @@ const Navbar = ({ navImageUrl }: NavbarProps) => {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`relative cursor-pointer pb-[4px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:transition-all after:duration-300 ${
+                    className={`hover:text-mainText cursor-pointer ${
                       (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href))
-                        ? "after:w-full"
-                        : "after:w-0 hover:after:w-full"
+                        ? "border-b border-borderColor"
+                        : "hover:border-b border-borderColor"
                     }`}
+                    style={{ paddingBottom: "4px" }}
                   >
                     {link.label}
                   </Link>

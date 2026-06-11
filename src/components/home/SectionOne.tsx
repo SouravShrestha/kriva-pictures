@@ -80,7 +80,7 @@ const SectionOne = ({ imageUrl }: SectionOneProps) => {
           }`}
         >
           <Link href="/packages" className="cursor-pointer mt-8">
-            <button className="relative flex gap-2 text-mainText font-barlow tracking-widest text-base group pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:w-0 hover:after:w-full after:transition-all after:duration-300">
+            <button className="flex gap-2 text-mainText font-barlow tracking-widest text-base group hover:underline">
               {texts.sectionOne.button}
               <img
                 src={arrowIcon.src}

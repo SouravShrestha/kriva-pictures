@@ -25,7 +25,7 @@ const GalleryMain = ({ categories }: GalleryMainProps) => {
           className="px-6 md:px-16 pt-14 pb-10"
         >
           <p
-            className={`font-almarai text-xs tracking-[0.25em] uppercase text-mainText/60 mb-8 text-center ${
+            className={`font-almarai text-sm tracking-widest text-mainText/60 mb-8 text-center ${
               tabInView ? "animate-fade-up" : "opacity-0"
             }`}
           >
@@ -44,10 +44,10 @@ const GalleryMain = ({ categories }: GalleryMainProps) => {
                   key={tab.slug}
                   onClick={() => setActiveTab(tab.slug)}
                   title={tab.name}
-                  className={`relative pb-[6px] font-barlow text-sm tracking-[0.15em] uppercase transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:transition-all after:duration-300 ${
+                  className={`font-barlow text-sm tracking-[0.15em] uppercase transition-colors duration-300 pb-[4px] ${
                     isActive
-                      ? "text-mainText after:w-full"
-                      : "text-mainText/90 hover:text-mainText after:w-0 hover:after:w-full"
+                      ? "text-mainText border-b border-borderColor"
+                      : "text-mainText/80 hover:text-mainText hover:border-b border-borderColor"
                   }`}
                 >
                   {tab.name.charAt(0).toUpperCase() +

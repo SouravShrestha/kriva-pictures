@@ -77,14 +77,14 @@ const Footer = ({ footerImages = [] }: FooterProps) => {
                     <Link
                       key={link.to}
                       href={link.to}
-                      className={`relative cursor-pointer w-fit pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:transition-all after:duration-300 ${
+                      className={`hover:text-mainText cursor-pointer w-fit ${
                         (
                           link.to === "/"
                             ? pathname === "/"
                             : pathname.startsWith(link.to)
                         )
-                          ? "after:w-full"
-                          : "after:w-0 hover:after:w-full"
+                          ? "border-b-1.5 border-borderColor"
+                          : "hover:border-b-1.5 border-borderColor"
                       }`}
                     >
                       {link.label}

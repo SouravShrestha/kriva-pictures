@@ -61,14 +61,14 @@ const SlidingNavbar = ({ onClose, onMenuItemClick, navImageUrl }: SlidingNavbarP
                 <Link
                   href={link.href}
                   onClick={onMenuItemClick}
-                  className={`relative font-barlow md:font-ttjenevers text-xl md:text-xl cursor-pointer pb-[3px] after:absolute after:bottom-0 after:left-0 after:h-px after:bg-mainText after:transition-all after:duration-300 ${
+                  className={`font-barlow md:font-ttjenevers text-xl md:text-xl cursor-pointer ${
                     (
                       link.href === "/"
                         ? pathname === "/"
                         : pathname.startsWith(link.href)
                     )
-                      ? "after:w-full"
-                      : "after:w-0 hover:after:w-full"
+                      ? "border-b-1.5 border-borderColor"
+                      : "hover:border-b-1.5 border-borderColor"
                   }`}
                 >
                   {link.label.charAt(0) + link.label.slice(1).toLowerCase()}
